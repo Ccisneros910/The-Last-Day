@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1240, 1000, Phaser.AUTO, ''); //{ preload: preload, create: create, update: update });
+var game = new Phaser.Game(1280, 720, Phaser.AUTO, ''); //{ preload: preload, create: create, update: update });
 //MAIN MENU STATE
 game.state.add('Load', Load);
 game.state.add('Menu', MainMenu);
@@ -59,10 +59,3 @@ game.state.start('Load');
 // };
 
 // moving this above the functions allowed the states to cycle properly
-
-
-// function preload(){}
-// function create(){}
-// function update(){}
-
-// functions

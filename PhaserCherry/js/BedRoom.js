@@ -1,17 +1,24 @@
 var player;
 var controls;
 var photo;
+var dialogueBox;
 var BedRoom = {
 	create: function(){
 	console.log('in the bed room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'room');
-		photo = game.add.sprite(200, 300, 'photo');
+		photo = game.add.sprite(800, 500, 'photo');
+		game.physics.arcade.enable(photo);
+		photo.body.setSize(200, 200, 200, 200);
 		//photo.scale = 0.5;
-		player = game.add.sprite(game.world.centerX, game.world.centerY, 'ghost');
+		player = game.add.sprite(50, 50, 'ghost');
 		game.physics.arcade.enable(player);
+		player.anchor.x = 0.5;
+		player.anchor.y = 0.5;
+		player.body.setSize(200, 200, 200, 200);
 		player.animations.add('spin', [0, 1, 2, 3], 16, true);
 		player.animations.play('spin');
+		dialogueBox = game.add.sprite(200, 800, 'dialogue');
 		game.camera.flash(0x000000, 2000);
 	},
 	update: function(){
@@ -30,5 +37,22 @@ var BedRoom = {
  		}else{
  			player.body.velocity.x = 0;
  		}
+ 		//game.physics.arcade.overlap(player, photo, revealInfo, null, this);
+ 		if(checkOverlap(player, photo)){
+ 			dialogueBox.alpha = 1;
+ 		}else{
+ 			dialogueBox.alpha = 0;
+ 		}
 	}
+};
+
+function revealInfo(){
+	dialogueBox = game.add.sprite(200, 800, 'dialogue');
+};
+// https://phaser.io/examples/v2/sprites/overlap-without-physics
+function checkOverlap(sprite1, sprite2){
+    var boundsA = sprite1.getBounds();
+    var boundsB = sprite2.getBounds();
+
+    return Phaser.Rectangle.intersects(boundsA, boundsB);
 };
