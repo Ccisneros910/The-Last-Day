@@ -8,7 +8,7 @@ Clue.prototype = Object.create(Phaser.Sprite.prototype);
 Snow.prototype.construct = Clue;
 
 Snow.prototype.create = function(){
-
+	
 }
 Snow.prototype.update = function(){
 
