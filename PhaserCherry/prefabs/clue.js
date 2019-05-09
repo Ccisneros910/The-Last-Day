@@ -4,7 +4,7 @@ function Clue(game, key, frame, xPos, yPos){
 	game.physics.enable(this);
 }
 
-Clue.prototype = Objec.create(Phaser.Sprite.prototype);
+Clue.prototype = Object.create(Phaser.Sprite.prototype);
 Snow.prototype.construct = Clue;
 
 Snow.prototype.create = function(){
