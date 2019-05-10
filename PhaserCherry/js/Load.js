@@ -10,6 +10,7 @@ var Load = {
 		game.load.image('glow', 'glowBall.png');
 		game.load.image('photo', 'familyPhoto.png');
 		game.load.atlas('ghost', 'ghost.png', 'ghost.json');
+		game.load.atlas('door', 'doors.png', 'doors.json');
 		//https://github.com/photonstorm/phaser-examples/blob/master/examples/loader/load%20texture%20atlas.js
 		// details on how to use texture atlases
 		//game.load.atlas('atlas', 'spritesheet.png', 'sprites.json');

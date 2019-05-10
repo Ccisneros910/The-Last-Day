@@ -5,11 +5,11 @@ function Clue(game, key, frame, xPos, yPos){
 }
 
 Clue.prototype = Object.create(Phaser.Sprite.prototype);
-Snow.prototype.construct = Clue;
+Clue.prototype.construct = Clue;
 
-Snow.prototype.create = function(){
+Clue.prototype.create = function(){
 	
 }
-Snow.prototype.update = function(){
+Clue.prototype.update = function(){
 
 }

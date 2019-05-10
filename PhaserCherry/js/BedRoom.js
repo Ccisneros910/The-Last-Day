@@ -1,5 +1,6 @@
 var player;
 var controls;
+var toHallway;
 var photo;
 var dialogueBox;
 var BedRoom = {
@@ -18,8 +19,15 @@ var BedRoom = {
 		player.body.setSize(200, 200, 200, 200);
 		player.animations.add('spin', [0, 1, 2, 3], 16, true);
 		player.animations.play('spin');
+		toHallway = game.add.sprite(900, 600, 'door');
+		game.physics.arcade.enable(toHallway);
+		toHallway.anchor.x = 0.5;
+		toHallway.anchor.y = 1;
+		//not using animations; just opening the door after a timer ends
+		toHallway.frame = 0;
 		dialogueBox = game.add.sprite(200, 800, 'dialogue');
 		game.camera.flash(0x000000, 2000);
+		game.time.events.add(Phaser.Timer.SECOND*5, openDoor, this);
 	},
 	update: function(){
  		controls = game.input.keyboard.createCursorKeys();
@@ -43,6 +51,9 @@ var BedRoom = {
  		}else{
  			dialogueBox.alpha = 0;
  		}
+ 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+ 			toHallway.frame = 1;
+ 		}
 	}
 };
 
@@ -56,3 +67,6 @@ function checkOverlap(sprite1, sprite2){
 
     return Phaser.Rectangle.intersects(boundsA, boundsB);
 };
+function openDoor(){
+	toHallway.frame = 1;
+}
