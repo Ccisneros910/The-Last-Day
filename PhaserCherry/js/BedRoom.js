@@ -11,21 +11,23 @@ var BedRoom = {
 		photo = game.add.sprite(800, 500, 'photo');
 		game.physics.arcade.enable(photo);
 		photo.body.setSize(200, 200, 200, 200);
-		//photo.scale = 0.5;
-		player = game.add.sprite(50, 50, 'ghost');
-		game.physics.arcade.enable(player);
-		player.anchor.x = 0.5;
-		player.anchor.y = 0.5;
-		player.body.setSize(200, 200, 200, 200);
-		player.animations.add('spin', [0, 1, 2, 3], 16, true);
-		player.animations.play('spin');
+		photo.body. scale = 0.5;
 		toHallway = game.add.sprite(900, 600, 'door');
 		game.physics.arcade.enable(toHallway);
 		toHallway.anchor.x = 0.5;
 		toHallway.anchor.y = 1;
-		//not using animations; just opening the door after a timer ends
+		// not using animations; just opening the door after a timer ends
 		toHallway.frame = 0;
-		dialogueBox = game.add.sprite(200, 800, 'dialogue');
+		// player must be drawn last to be above everything
+		player = game.add.sprite(200, 400, 'ghost');
+		game.physics.arcade.enable(player);
+		player.body.collideWorldBounds = true;
+		player.anchor.x = 0.5;
+		player.anchor.y = 0.5;
+		dialogueBox = game.add.sprite(100, 500, 'dBox');
+		// player.body.setSize(200, 200, 200, 200);
+		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
+		// player.animations.play('spin');
 		game.camera.flash(0x000000, 2000);
 		game.time.events.add(Phaser.Timer.SECOND*5, openDoor, this);
 	},
@@ -45,7 +47,7 @@ var BedRoom = {
  		}else{
  			player.body.velocity.x = 0;
  		}
- 		//game.physics.arcade.overlap(player, photo, revealInfo, null, this);
+ 		game.physics.arcade.overlap(player, photo, revealInfo, null, this);
  		if(checkOverlap(player, photo)){
  			dialogueBox.alpha = 1;
  		}else{
@@ -54,19 +56,28 @@ var BedRoom = {
  		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
  			toHallway.frame = 1;
  		}
+ 		game.physics.arcade.overlap(player, toHallway, transition, null, this);
 	}
 };
-
+//FUNCTIONS
 function revealInfo(){
-	dialogueBox = game.add.sprite(200, 800, 'dialogue');
-};
+	dialogueBox = game.add.sprite(200, 800, 'dBox');
+}
 // https://phaser.io/examples/v2/sprites/overlap-without-physics
 function checkOverlap(sprite1, sprite2){
     var boundsA = sprite1.getBounds();
     var boundsB = sprite2.getBounds();
-
     return Phaser.Rectangle.intersects(boundsA, boundsB);
-};
+}
 function openDoor(){
+	console.log('this function will call later!');
 	toHallway.frame = 1;
+}
+function transition(){
+	console.log('this function should not call!');
+	game.camera.onFadeComplete.add(leaveRoom);
+	game.camera.fade(0x000000, 1000);
+}
+function leaveRoom(){
+	game.state.start('LivingRoom');
 }

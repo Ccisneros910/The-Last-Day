@@ -7,11 +7,11 @@ var LivingRoom = {
 	console.log('in the living room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'livingR');
-		photo = game.add.sprite(800, 500, 'photo');
-		game.physics.arcade.enable(photo);
-		photo.body.setSize(200, 200, 200, 200);
-		//photo.scale = 0.5;
-		player = game.add.sprite(50, 50, 'ghost');
+		// photo = game.add.sprite(800, 500, 'photo');
+		// game.physics.arcade.enable(photo);
+		// photo.body.setSize(200, 200, 200, 200);
+		// photo.scale = 0.5;
+		player = game.add.sprite(100, 500, 'ghost');
 		game.physics.arcade.enable(player);
 		player.anchor.x = 0.5;
 		player.anchor.y = 0.5;
@@ -38,11 +38,11 @@ var LivingRoom = {
  			player.body.velocity.x = 0;
  		}
  		//game.physics.arcade.overlap(player, photo, revealInfo, null, this);
- 		if(checkOverlap(player, photo)){
- 			dialogueBox.alpha = 1;
- 		}else{
- 			dialogueBox.alpha = 0;
- 		}
+ 		// if(checkOverlap(player, photo)){
+ 		// 	dialogueBox.alpha = 1;
+ 		// }else{
+ 		// 	dialogueBox.alpha = 0;
+ 		// }
 	}
 };
 
