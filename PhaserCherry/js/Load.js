@@ -5,7 +5,8 @@ var Load = {
 		game.load.path = ('assets/img/');
 		game.load.image('homeScreen', 'house.jpg');
 		game.load.image('dialogue', 'dialogueBox.jpg');
-		game.load.image('room', 'room-resized.png');
+		game.load.image('masterR', 'master.jpg');
+		game.load.image('livingR', 'living room.jpg');
 		game.load.image('glow', 'glowBall.png');
 		game.load.image('photo', 'familyPhoto.png');
 		game.load.atlas('ghost', 'ghost.png', 'ghost.json');

@@ -3,6 +3,7 @@ var game = new Phaser.Game(1280, 720, Phaser.AUTO, ''); //{ preload: preload, cr
 game.state.add('Load', Load);
 game.state.add('Menu', MainMenu);
 game.state.add('BedRoom', BedRoom);
+game.state.add('LivingRoom', LivingRoom);
 game.state.start('Load');
 
 // var TheLastDay = {};

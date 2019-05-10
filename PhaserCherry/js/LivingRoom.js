@@ -2,11 +2,11 @@ var player;
 var controls;
 var photo;
 var dialogueBox;
-var BedRoom = {
+var LivingRoom = {
 	create: function(){
-	console.log('in the bed room');
+	console.log('in the living room');
 		game.camera.fade(0x000000, 0);
-		background = game.add.sprite(0, 0, 'masterR');
+		background = game.add.sprite(0, 0, 'livingR');
 		photo = game.add.sprite(800, 500, 'photo');
 		game.physics.arcade.enable(photo);
 		photo.body.setSize(200, 200, 200, 200);
