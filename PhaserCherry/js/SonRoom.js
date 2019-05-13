@@ -34,8 +34,8 @@ var SonRoom = {
 		player.body.drag.y = 550;
 		dialogueBox = game.add.sprite(100, 500, 'dBox');
 		dialogueBox.alpha = 0;
-		photoText = game.add.text(320, 520, "This family looks really happy. Why do they seem so familiar?", style);
-		photoText.lineSpacing = -10;
+		// photoText = game.add.text(320, 520, "This family looks really happy. Why do they seem so familiar?", style);
+		// photoText.lineSpacing = -10;
 		// photoText.alpha = 0;
 		// player.body.setSize(200, 200, 200, 200);
 		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
