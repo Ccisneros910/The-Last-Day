@@ -40,5 +40,5 @@ function startTransition(){
 	game.camera.fade(0x000000, 1000);
 }
 function goToState(){
-	game.state.start('BedRoom', true, false);
+	game.state.start('MasterRoom', true, false);
 };
