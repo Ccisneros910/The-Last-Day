@@ -1,3 +1,7 @@
+/*
+TEAM: WE DEM BOIZ
+Team members: Carlos Cisneros, Katheriya Prowsri, Sally Nguy
+*/
 var game = new Phaser.Game(1280, 720, Phaser.AUTO, ''); //{ preload: preload, create: create, update: update });
 //MAIN MENU STATE
 game.state.add('Load', Load);

@@ -1,6 +1,9 @@
-function Clue(game, image, xPos, yPos){
+function Clue(game, name, image, xPos, yPos, message1){
 	Phaser.Sprite.call(this, game, xPos, yPos, 0, 1);
-	this.anchor.set(0.5);
+	this.name = name;
+	this.anchor.x = 0.5;
+	this.anchor.y = 1;
+	this.message1 = message1;
 	game.physics.enable(this);
 }
 

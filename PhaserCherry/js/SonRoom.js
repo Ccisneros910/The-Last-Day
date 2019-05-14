@@ -1,14 +1,11 @@
-var player;
-var controls;
-var toHallway;
 var photo;
 var dialogueBox;
 var allClues;
-var style = { font: 'bold 30pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
 var photoText;
 var SonRoom = {
 	create: function(){
-	console.log('in Keith\'s room');
+		this.RoomName = 'Keith\'s Room';
+		console.log('in Keith\'s room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'testR');
 		// photo = game.add.sprite(400, 200, 'photo');
@@ -80,15 +77,6 @@ var SonRoom = {
 // 	//dialogueBox = game.add.sprite(200, 800, 'dBox');
 // }
 // https://phaser.io/examples/v2/sprites/overlap-without-physics
-function checkOverlap(sprite1, sprite2){
-    var boundsA = sprite1.getBounds();
-    var boundsB = sprite2.getBounds();
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
-}
-function openDoor(){
-	console.log('this function will call later!');
-	toHallway.frame = 1;
-}
 //adding the word "start" into the function resulted in self-invocation
 function fromKeith(){
 	// console.log('this function should not call!');

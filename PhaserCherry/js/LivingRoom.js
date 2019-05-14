@@ -1,10 +1,9 @@
-var player;
-var controls;
 var photo;
 var dialogueBox;
 var LivingRoom = {
 	create: function(){
-	console.log('in the living room');
+		this.RoomName = 'Living Room'
+		console.log('in the living room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'livingR');
 		// photo = game.add.sprite(800, 500, 'photo');
@@ -44,15 +43,4 @@ var LivingRoom = {
  		// 	dialogueBox.alpha = 0;
  		// }
 	}
-};
-
-function revealInfo(){
-	dialogueBox = game.add.sprite(200, 800, 'dialogue');
-};
-// https://phaser.io/examples/v2/sprites/overlap-without-physics
-function checkOverlap(sprite1, sprite2){
-    var boundsA = sprite1.getBounds();
-    var boundsB = sprite2.getBounds();
-
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
 };

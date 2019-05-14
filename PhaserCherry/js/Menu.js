@@ -5,6 +5,9 @@ var MainMenu = {
 	create: function() {
 		console.log('MainMenu: create');
 		game.stage.backgroundColor = "#ffffff";
+		bgm = game.add.audio('mainMenu');
+		bgm.play();
+		sfx = game.add.audio('buttonSelect');
 		this.background = game.add.sprite(0, 0, 'homeScreen');
 		this.title = game.add.text(100, 50, 'The Last Day', {fontSize: '64px', fill: '#66f5ff'});
 		// this.title.anchor.set(0.5);
@@ -36,9 +39,11 @@ function off(item){
 	item.strokeThickness = 0;
 };
 function startTransition(){
+	sfx.play();
 	game.camera.onFadeComplete.add(goToState);
 	game.camera.fade(0x000000, 1000);
 }
 function goToState(){
+	bgm.stop();
 	game.state.start('MasterRoom', true, false);
 };

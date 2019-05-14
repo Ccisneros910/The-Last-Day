@@ -1,3 +1,15 @@
+var promptMessages = ["Press SPACEBAR to enter"];
+// characters
+var Sara, Keith, Greg;
+// event management
+var SaraDone, KeithDone, GregDone;
+// player variables
+var player, controls;
+// reusables
+var prompt, dialogueBox, dialogueText, toHallway, toSara, toKeith;
+var bgm, sfx; 
+var style = { font: 'bold 30pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
+var clues, clue, viewing = false;
 var Load = {
 	preload: function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -10,6 +22,11 @@ var Load = {
 		//game.load.atlas('ghost', 'ghost.png', 'ghost.json');
 		//Clues
 		game.load.image('photo', 'familyPhoto.png');
+		game.load.image('frame1', 'frame1.jpg');
+		game.load.image('frame2', 'frame2.jpg');
+		game.load.image('polaroid', 'polaroid.jpg');
+		game.load.image('flower', 'flower.png');
+		game.load.image('ring', 'ring.png');
 		game.load.image('glow', 'glowBall.png');
 		//Rooms
 		game.load.image('daughterR', 'RoomDaughter.png');
@@ -20,6 +37,12 @@ var Load = {
 		//Misc
 		game.load.image('dBox', 'dialogueBox.png');
 		game.load.atlas('door', 'doors.png', 'doors.json');
+		//AUDIO LOADING
+		game.load.path = ('assets/audio/');
+		// BGM
+		game.load.audio('mainMenu', '240914_bdvictor_wheat-in-the-wind.mp3');
+		// SFX
+		game.load.audio('buttonSelect', '339343_newagesoup_soft-blip-e-major.mp3');
 		// details on how to use texture atlases
 		//https://github.com/photonstorm/phaser-examples/blob/master/examples/loader/load%20texture%20atlas.js
 	}, 

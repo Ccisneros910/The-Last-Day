@@ -1,34 +1,33 @@
-var player;
-var controls;
-var toHallway;
 var photo;
-var dialogueBox;
 var allClues;
-var style = { font: 'bold 30pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
 var photoText;
 var Hallway = {
 	create: function(){
 	console.log('in the hallway');
+	this.RoomName = 'Hallway';
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'hallway');
+		background.scale.setTo(1.3, 1); // not wide enough to fit screen
 		// photo = game.add.sprite(400, 200, 'photo');
 		// game.physics.arcade.enable(photo);
 		// photo.scale.setTo(0.3, 0.3);
 		// photo.body.setSize(200, 200, 200, 200);
-		toSara = game.add.sprite(300, 500, 'door');
+		toSara = game.add.sprite(370, 500, 'door');
 		game.physics.arcade.enable(toSara);
 		toSara.anchor.x = 0.5;
 		toSara.anchor.y = 1;
 		toSara.scale.setTo(0.5,0.5);
 		toSara.body.setSize(160, 330, 40, 40);
 		toSara.frame = 1;
-		toKeith = game.add.sprite(650, 500, 'door');
+		toSara.name = 'Sara';
+		toKeith = game.add.sprite(800, 500, 'door');
 		game.physics.arcade.enable(toKeith);
 		toKeith.anchor.x = 0.5;
 		toKeith.anchor.y = 1;
 		toKeith.scale.setTo(0.5,0.5);
 		toKeith.body.setSize(160, 330, 40, 40);
 		toKeith.frame = 1;
+		toKeith.name = 'Keith'; 
 		// not using animations; just opening the door after a timer ends
 		// player must be drawn last to be above everything
 		player = game.add.sprite(200, 400, 'ghost');
@@ -41,12 +40,6 @@ var Hallway = {
 		player.body.drag.y = 550;
 		dialogueBox = game.add.sprite(100, 500, 'dBox');
 		dialogueBox.alpha = 0;
-		// photoText = game.add.text(320, 520, "This family looks really happy. Why do they seem so familiar?", style);
-		// photoText.lineSpacing = -10;
-		// photoText.alpha = 0;
-		// player.body.setSize(200, 200, 200, 200);
-		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
-		// player.animations.play('spin');
 		game.camera.flash(0x000000, 2000);
 		// game.time.events.add(Phaser.Timer.SECOND*10, openDoor, this);
 	},
@@ -87,15 +80,10 @@ var Hallway = {
 // 	//dialogueBox = game.add.sprite(200, 800, 'dBox');
 // }
 // https://phaser.io/examples/v2/sprites/overlap-without-physics
-function checkOverlap(sprite1, sprite2){
-    var boundsA = sprite1.getBounds();
-    var boundsB = sprite2.getBounds();
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
-}
-function openDoor(){
-	console.log('this function will call later!');
-	toHallway.frame = 1;
-}
+// function openDoor(){
+// 	console.log('this function will call later!');
+// 	toHallway.frame = 1;
+// }
 //adding the word "start" into the function resulted in self-invocation
 function goToSara(){
 	// console.log('this function should not call!');

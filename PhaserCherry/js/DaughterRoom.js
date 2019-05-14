@@ -1,15 +1,12 @@
-var player;
-var controls;
-var toHallway;
 var photo;
 var dialogueBox;
 var allClues;
-var style = { font: 'bold 30pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
 var photoText;
 
 var DaughterRoom = {
 	create: function(){
-	console.log('in Sara\'s room');
+		this.RoomName = 'Sara\'s Room';
+		console.log('in Sara\'s room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'daughterR');
 		// photo = game.add.sprite(400, 200, 'photo');
@@ -56,14 +53,15 @@ var DaughterRoom = {
  		}else if(controls.right.isDown){
  			player.body.velocity.x = 300;
  		}
- 		// game.physics.arcade.overlap(player, photo, revealInfo, null, this);
- 		// if(checkOverlap(player, photo)){
- 		// 	dialogueBox.alpha = 1;
- 		// 	photoText.alpha = 1;
- 		// }else{
- 		// 	dialogueBox.alpha = 0;
- 		// 	photoText.alpha = 0;
- 		// }
+		if(checkOverlap(player, toHallway)){
+ 			promp.alpha = prompt[0];
+ 			prompt.alpha = 1;
+ 			if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+ 				transition();
+ 			}
+ 		}else{
+ 			prompt.alpha = 0;
+ 		}
  		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
  			toHallway.frame = 1;
  		}
@@ -77,15 +75,6 @@ var DaughterRoom = {
 };
 //FUNCTIONS
 // https://phaser.io/examples/v2/sprites/overlap-without-physics
-function checkOverlap(sprite1, sprite2){
-    var boundsA = sprite1.getBounds();
-    var boundsB = sprite2.getBounds();
-    return Phaser.Rectangle.intersects(boundsA, boundsB);
-}
-function openDoor(){
-	console.log('this function will call later!');
-	toHallway.frame = 1;
-}
 //adding the word "start" into the function resulted in self-invocation
 function fromSara(){
 	// console.log('this function should not call!');
