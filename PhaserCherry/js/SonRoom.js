@@ -81,7 +81,7 @@ var SonRoom = {
 function fromKeith(){
 	// console.log('this function should not call!');
 	if(toHallway.frame == 1){
-		game.camera.onFadeComplete.add(leaveKeith);
+		game.camera.onFadeComplete.addOnce(leaveKeith);
 		game.camera.fade(0x000000, 1000);
 	}
 }

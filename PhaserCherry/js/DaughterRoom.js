@@ -54,7 +54,7 @@ var DaughterRoom = {
  			player.body.velocity.x = 300;
  		}
 		if(checkOverlap(player, toHallway)){
- 			promp.alpha = prompt[0];
+ 			prompt.alpha = prompt[0];
  			prompt.alpha = 1;
  			if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
  				transition();
@@ -79,7 +79,7 @@ var DaughterRoom = {
 function fromSara(){
 	// console.log('this function should not call!');
 	if(toHallway.frame == 1){
-		game.camera.onFadeComplete.add(leaveSara);
+		game.camera.onFadeComplete.addOnce(leaveSara);
 		game.camera.fade(0x000000, 1000);
 	}
 }

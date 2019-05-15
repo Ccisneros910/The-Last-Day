@@ -79,7 +79,7 @@ var MasterRoom = {
  			dialogueText.alpha = 0;
  		}
  		if(checkOverlap(player, toHallway)){
- 			promp.alpha = prompt[0];
+ 			prompt.alpha = prompt[0];
  			prompt.alpha = 1;
  			if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
  				transition();
@@ -122,15 +122,16 @@ function openDoor(){
 function transition(){
 	// console.log('this function should not call!');
 	if(toHallway.frame == 1){
-		game.camera.onFadeComplete.add(leaveRoom);
+		game.camera.onFadeComplete.addOnce(leaveRoom);
 		game.camera.fade(0x000000, 1000);
 	}
 }
 // when the player passes through a door, will take them to the corresponding room
 function leaveRoom(){
-	if(this.RoomName=='Master Room' ||this.RoomName=='Sara\'s Room' || this.RoomName=='Keith\'s Room'){
-		game.state.start('Hallway');
-	}else{
-		game.state.start('')
-	}
+	// if(this.RoomName=='Master Room' ||this.RoomName=='Sara\'s Room' || this.RoomName=='Keith\'s Room'){
+	// 	game.state.start('Hallway');
+	// }else{
+	// 	game.state.start('')
+	// }
+	game.state.start('Hallway');
 }

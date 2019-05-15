@@ -87,7 +87,7 @@ var Hallway = {
 //adding the word "start" into the function resulted in self-invocation
 function goToSara(){
 	// console.log('this function should not call!');
-		game.camera.onFadeComplete.add(RoomSara);
+		game.camera.onFadeComplete.addOnce(RoomSara);
 		game.camera.fade(0x000000, 1000);
 }
 function RoomSara(){
@@ -95,7 +95,7 @@ function RoomSara(){
 }
 function goToKeith(){
 	// console.log('this function should not call!');
-		game.camera.onFadeComplete.add(RoomKeith);
+		game.camera.onFadeComplete.addOnce(RoomKeith);
 		game.camera.fade(0x000000, 1000);
 }
 function RoomKeith(){
