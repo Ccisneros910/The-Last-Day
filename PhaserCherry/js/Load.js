@@ -6,9 +6,11 @@ var SaraDone, KeithDone, GregDone;
 // player variables
 var player, controls;
 // reusables
-var prompt, dialogueBox, dialogueText, toHallway, toSara, toKeith;
+var prompt, dialogueBox, dialogueText, spacebarP, spacebarB; //images and text
+var toHallway, toSara, toKeith; // doors
+var overClue, playerPaused; // booleans
 var bgm, sfx; 
-var style = { font: 'bold 30pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
+var style = { font: 'bold 25pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 800 };
 var clues, clue, viewing = false;
 var Load = {
 	preload: function(){
@@ -37,6 +39,7 @@ var Load = {
 		//Misc
 		game.load.image('dBox', 'dialogueBox.png');
 		game.load.atlas('door', 'doors.png', 'doors.json');
+		game.load.atlas('space bar', 'atlasSpacebar.png', 'hashSpacebar.json');
 		//AUDIO LOADING
 		game.load.path = ('assets/audio/');
 		// BGM
