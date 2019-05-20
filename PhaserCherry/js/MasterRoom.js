@@ -115,7 +115,7 @@ function leaveRoom(){
 	if(this.RoomName=='Master Room' ||this.RoomName=='Sara\'s Room' || this.RoomName=='Keith\'s Room'){
 		game.state.start('Hallway');
 	}else{
-		game.state.start('Hallway')
+		game.state.start('Hallway');
 	}
 }
 function playText(){
