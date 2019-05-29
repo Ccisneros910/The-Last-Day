@@ -9,6 +9,7 @@ function Door( game, x, y, image, frame, name, scale){
 	// not using animations; just opening the door after a timer ends
 	this.frame = frame;
 	this.name = name;
+	this.type = 'door';
 }
 
 Door.prototype = Object.create(Phaser.Sprite.prototype);

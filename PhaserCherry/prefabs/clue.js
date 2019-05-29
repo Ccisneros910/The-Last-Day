@@ -4,6 +4,7 @@ function Clue(game, name, image, xPos, yPos, message1){
 	this.anchor.x = 0.5;
 	this.anchor.y = 1;
 	this.message1 = message1;
+	this.type = 'clue';
 	game.physics.enable(this);
 }
 
