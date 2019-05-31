@@ -26,11 +26,11 @@ var optionStyle = {
 	fontSize: 30,
 	fill: '#ffffff'
 };
-var creditsStyle = {
+var creditStyle = {
 	font: 'Pacifico',
 	fontSize: 25,
-	fill: '#ffffff'
-	
+	fill: '#ffffff',
+	backgroundColor: '#a3a3a3'
 };
 // Dialogue text style
 var dialogueStyle = {
