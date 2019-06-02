@@ -1,7 +1,4 @@
 var photo;
-var dialogueBox;
-var allClues;
-var photoText;
 var SonRoom = {
 	create: function(){
 		this.RoomName = 'Keith\'s Room';
@@ -12,8 +9,8 @@ var SonRoom = {
 		// not using animations; just opening the door after a timer ends
 		// player must be drawn last to be above everything
 		player = new Player(game, 200, 400, 'ghost');
-		dialogueBox = game.add.sprite(100, 500, 'dBox');
-		dialogueBox.alpha = 0;
+		dBox = game.add.sprite(100, 500, 'dBox');
+		dBox.alpha = 0;
 		game.camera.flash(0x000000, 2000);
 	},
 	update: function(){

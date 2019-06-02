@@ -1,6 +1,4 @@
 var photo;
-var photoText;
-var player;
 var MasterRoom = {
 	create: function(){
 		console.log('in the master room');
@@ -13,32 +11,32 @@ var MasterRoom = {
 		clues = game.add.group();
 		clues.enableBody = true;
 		// individual clue assets
-		clue = clues.create(400, 200, 'Wedding');
+		clue = clues.create(300, 200, 'Wedding');
 		clue.scale.set(0.3, 0.3);
-		clue = clues.create(100, 50, 'ring');
-		// clue.scale.set(0.1, 0.1);
+		game.physics.arcade.enable(clue);
+		clue = clues.create(1000, 500, 'ring');
 		game.physics.arcade.enable(clue);
 		//make the husbando
 		Greg = game.add.sprite(1050, 500, 'Greg');
 		GregMake();
 		//GREG TWEENS
 		//Greg enters the room
-		t01 = game.add.tween(Greg);
-		t01.to( { alpha: 1 }, 1500, Phaser.Easing.Linear.None, true, 5500);
-		t02 = game.add.tween(Greg);
-		t02.to( { x: 400 }, 4000, Phaser.Easing.Linear.None, false, 500);
-		//Greg leaves the room
-		t03 = game.add.tween(Greg);
-		t03.to( { x: 1065 }, 3500, Phaser.Easing.Linear.None, false);
-		t04 = game.add.tween(Greg);
-		t04.to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, false);
-		t04.onComplete.add(GregClear, this);
-		// link the tweens for proper sequences
-		t01.chain(t02);
-		t03.chain(t04);
+		// t01 = game.add.tween(Greg);
+		// t01.to( { alpha: 1 }, 1500, Phaser.Easing.Linear.None, false);
+		// t02 = game.add.tween(Greg);
+		// t02.to( { x: 400 }, 4000, Phaser.Easing.Linear.None, false);
+		// //Greg leaves the room
+		// t03 = game.add.tween(Greg);
+		// t03.to( { x: 1065 }, 3500, Phaser.Easing.Linear.None, false);
+		// t04 = game.add.tween(Greg);
+		// t04.to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, false);
+		// t04.onComplete.add(GregClear, this);
+		// // link the tweens for proper sequences
+		// t01.chain(t02);
+		// t03.chain(t04);
 		// player must be drawn last to be above everything
 		player = new Player(game, 200, 400, 'ghost');
-		player.alpha = 0.9;
+		player.alpha = 0;
 		// the spacebar will follow the player around
 		spacebarP = player.addChild(game.add.sprite(4, -80, 'space bar'));
 		spacebarP.scale.set(0.08, 0.08);
@@ -46,50 +44,63 @@ var MasterRoom = {
 		spacebarP.alpha = 0;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		// DIALOGUE SETUP
+		dialogue = JSON.parse(game.cache.getText('GregScenes'));
 		// the dialogue box for that will display behind each text message
 		dialoguePlaying = false;
-		dialogueBox = game.add.sprite(100, 500, 'dBox');
+		dBox = game.add.sprite(100, 500, 'dBox');
+		dBox.alpha = 0;
+		dText = game.add.text(320, 520, '', dialogueStyle);
 		//place emotions in box but turn off
 		// Ghost emotions
-		GhostEmotes = dialogueBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
+		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
 		GhostEmotes.scale.set(1, 1);
 		GhostEmotes.anchor.x = 0.5;
 		GhostEmotes.anchor.y = 0.5;
-		GhostEmotes.animations.add('think', [0], 1, false);
-		GhostEmotes.animations.add('cry', [1, 2], 3, true);
-		GhostEmotes.animations.add('surprise', [3, 4], 3, true);
+		GhostEmotes.animations.add('neutral', [0], 0, false);
+		GhostEmotes.animations.add('cry', [1, 2], 2, true);
+		GhostEmotes.animations.add('surprise', [3, 4], 2, true);
 		GhostEmotes.alpha = 0;
 		//Greg emotions
-		GregEmotes = dialogueBox.addChild(game.add.sprite(100, 100, 'GregEmotions'));
+		GregEmotes = dBox.addChild(game.add.sprite(100, 100, 'GregEmotions'));
 		GregEmotes.scale.set(1, 1);
 		GregEmotes.anchor.x = 0.5;
 		GregEmotes.anchor.y = 0.5;
-		GregEmotes.animations.add('quiet', [0], 0, false);
-		GregEmotes.animations.add('talk', [1], 3, true);
-		GregEmotes.animations.add('cry', [2, 3], 3, true);
+		GregEmotes.animations.add('neutral', [0], 0, false);
+		GregEmotes.animations.add('talk', [0, 1], 2, true);
+		GregEmotes.animations.add('cry', [2, 3], 2, true);
 		GregEmotes.alpha = 0;
 		// tell the user how to move
-		// prompt = game.add.text(320, 520, promptMessages[0], style);
-		// prompt.alpha = 0;
-		dialogueBox.alpha = 0;
-		// // fade in the screen
+		// fade in the screen
 		game.camera.flash(0x000000, 2000);
 		// set timer before door opens
 		game.time.events.add(Phaser.Timer.SECOND*5, openDoor, this);
-		game.time.events.add(Phaser.Timer.SECOND*13, GregExit, this);
+		// game.time.events.add(Phaser.Timer.SECOND*13, GregExit, this);
+		if(GregScene == 0){
+			console.log("going to cutscene fnc in 5");
+			game.time.events.add(Phaser.Timer.SECOND*5, GregCutscene, this);
+		}
+		cutscenePlaying = true;
 	},
 	update: function(){
 	 	// checks if player is overlapping with any clues
 	 	player.time++;
- 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
- 			//empty SPACE
- 		}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
- 			// to leave the room
- 		}
- 		else{
- 			clearPlayer();
-			stopSpacebar();
- 		}
+	 	if(cutscenePlaying){
+	 		
+	 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && event != null && player.time >50){
+	 			GregCutscene();
+	 		}
+	 	}else if(!cutscenePlaying){
+	 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
+	 			//empty SPACE
+	 		}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
+	 			// to leave the room
+	 		}
+	 		else{
+	 			clearPlayer();
+				stopSpacebar();
+	 		}
+	 	}
  	}
 	// render: function(){
 	// 	game.debug.body(clue);
@@ -108,26 +119,27 @@ function clueFound(p, g){
 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && p.time > 50){
 		console.log('spacebar pressed');
 		// make sure there is currently no dialogue
-	    if(dialogueText==null && dialoguePlaying == false){
+	    if(dText.text == '' && dialoguePlaying == false){
 	    	console.log('playing dialogue...');
 	    	dialoguePlaying = true;
-	    	dialogueBox.alpha = 1;
+	    	dBox.alpha = 1;
 	    	// pausePlayer(p);
 	    	player.speed = 0;
 	    	console.log(player.speed);
 	    	stopSpacebar();
 		    if(g.key == 'Wedding'){
-		    	dialogueText = game.add.text(320, 520, "Till death do us part...Little did I know death would come so soon.", dialogueStyle);
+		    	dText.text = "Till death do us part...Little did I know death would come so soon.";
 			}else if(g.key =='ring'){
-		    	dialogueText = game.add.text(320, 520, "Till death do us part...", dialogueStyle);
-			}else if(g.key =='frame2'){
-		    	dialogueText = game.add.text(320, 520, "Keith. You started out so small. You are so much bigger, but you've got so far to go. And I...", dialogueStyle);
+		    	dText.text = "Till death do us part...";
 			}
+			// else if(g.key =='frame2'){
+		 //    	dText = game.add.text(320, 520, "Keith. You started out so small. You are so much bigger, but you've got so far to go. And I...", dialogueStyle);
+			// }
 			player.time = 0;
-		}else if(dialogueText != null && dialoguePlaying == true){
+		}else if(dText != '' && dialoguePlaying == true){
 			dialoguePlaying = false;
 			playSpacebar(p);
-			resetDialogueBox();
+			resetDBox();
 			unpausePlayer(p);
 			// p.speed = 400;
 			player.time = 0;
@@ -184,18 +196,13 @@ function pausePlayer(p){
 function unpausePlayer(p){
 	p.speed = 400;
 }
-// Dialogue Management
-function playText(){
-
-}
-function resetDialogueBox(){
-	dialogueBox.alpha = 0;
-	if(dialogueText!= null){
-		dialogueText.destroy();
-		dialogueText = null;
+function resetDBox(){
+	dBox.alpha = 0;
+	if(dText!= ''){
+		// dText.destroy();
+		dText = '';
 	}
 }
-
 function GregExit(){
 	GregFlip();
 	t03.start();
@@ -220,4 +227,44 @@ function GregMake(){
 		Greg.anchor.y = 0.5;
 		Greg.alpha = 0;
 	}
+}
+
+function GregCutscene(){
+	console.log("playing cutscene");
+	console.log(dialogue[GregScene][event]['action']);
+	if(dialogue[GregScene][event]['action'] == "tween"){
+		// remove spacebar as player cannot advance scene
+		stopSpacebar();
+		console.log("it is a tween");
+		if(dialogue[GregScene][event]['number'] == 1){
+			// console.log("first tween");
+			// console.log(dialogue[GregScene][event]['speaker']);
+			// var target = dialogue[GregScene][event]['speaker'];
+			// console.log(target);
+			// console.log(game[target]);
+			dBox.alpha = 0;
+			GregEmotes.alpha = 0;
+			GhostEmotes.alpha = 0;
+			// game.add.tween(dialogue[GregScene][event]['speaker']).to({dialogue[GregScene][event]['action'] : dialogue[GregScene][event]['result']}, dialogue[GregScene][event]['duration'], Phaser.Easing.Linear.None, true);
+			game.add.tween(player).to({alpha : 0.9}, 3000, Phaser.Easing.Linear.None, true);
+		}
+
+	}else if(dialogue[GregScene][event]['action'] == "speak"){
+		// play spacebar to indicate the player can advance scene
+		playSpacebar(player);
+		dBox.alpha = 1;
+		GhostEmotes.alpha = 0;
+		GregEmotes.alpha = 0;
+		if(dialogue[GregScene][event]['speaker'] == "player"){
+			GhostEmotes.alpha = 1;
+			GhostEmotes.animations.play(dialogue[GregScene][event]['emotion']);
+		}else if(dialogue[GregScene][event]['speaker'] == "Greg"){
+			GregEmotes.alpha = 1;
+			GregEmotes.animations.play(dialogue[GregScene][event]['emotion']);
+		}
+		dText.text = dialogue[GregScene][event]['dialogue'];
+		player.time = 0;
+	}
+	//move to the next event IF exists
+	event++;
 }

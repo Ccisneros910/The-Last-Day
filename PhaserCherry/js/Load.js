@@ -3,15 +3,16 @@ var promptMessages = ["Press SPACEBAR to enter"];
 var Sara, Keith, Greg;
 var GregTween, SaraTween, KeithTween;
 var GhostEmotes, GregEmotes, SaraEmotes, KeithEmotes;
-// event management (booleans)
-var SaraDone, KeithDone, GregDone;
-var t01, t02, t03, t04, t05, t06, t07, t08, t09, t10;
+// cutscenes variables
+var SaraScene = 0, KeithScene = 0, GregScene = 0;
+var event = 0;
+var dialogue; // file to read from
+var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
 var player, controls;
 // reusables
-var prompt, dialogueBox, dialogueText, spacebarP, spacebarB; //images and text
 var toHallway, toSara, toKeith; // doors
-var overClue, dialoguePlaying, cutscenePlaying = false; // booleans
+var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
 var enterGreg = false, goodbyeGreg = false, enterSara = false, goodbyeSara = false, enterKeith = false, goodbyeKeith = false;
 var bgm, sfx; 
@@ -75,6 +76,11 @@ var Load = {
 		game.load.image('dBox', 'dialogueBox.png');
 		game.load.atlas('door', 'doors.png', 'doors.json');
 		game.load.atlas('space bar', 'atlasSpacebar.png', 'hashSpacebar.json');
+		// DIALOGUE LOADING
+		game.load.path = ('dialog/');
+		game.load.text('GregScenes', 'GregRoomScenes.json');
+		game.load.text('SaraScenes', 'SaraRoomScenes.json');
+		game.load.text('KeithScenes', 'KeithRoomScenes.json');
 		//AUDIO LOADING
 		game.load.path = ('assets/audio/');
 		// BGM

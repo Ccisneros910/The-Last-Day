@@ -1,7 +1,5 @@
 var photo;
-var dialogueBox;
 var allClues;
-var photoText;
 
 var DaughterRoom = {
 	create: function(){
@@ -12,8 +10,8 @@ var DaughterRoom = {
 		toHallway = new Door(game, 200, 660, 'door', 1, 'Hallway', 0.7);
 		// player must be drawn last to be above everything
 		player = new Player(game, 200, 400, 'ghost');
-		dialogueBox = game.add.sprite(100, 500, 'dBox');
-		dialogueBox.alpha = 0;
+		dBox = game.add.sprite(100, 500, 'dBox');
+		dBox.alpha = 0;
 		game.camera.flash(0x000000, 2000);
 	},
 	update: function(){
