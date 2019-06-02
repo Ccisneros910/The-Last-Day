@@ -16,7 +16,7 @@ var LivingRoom = {
 		player.body.setSize(200, 200, 200, 200);
 		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
 		// player.animations.play('spin');
-		dBox = game.add.sprite(200, 800, 'dialogue');
+		Box = game.add.sprite(200, 800, 'dialogue');
 		game.camera.flash(0x000000, 2000);
 	},
 	update: function(){
@@ -37,9 +37,9 @@ var LivingRoom = {
  		}
  		//game.physics.arcade.overlap(player, photo, revealInfo, null, this);
  		// if(checkOverlap(player, photo)){
- 		// 	dBox.alpha = 1;
+ 		// 	Box.alpha = 1;
  		// }else{
- 		// 	dBox.alpha = 0;
+ 		// 	Box.alpha = 0;
  		// }
 	}
 };

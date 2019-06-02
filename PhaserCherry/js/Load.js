@@ -12,6 +12,7 @@ var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 var player, controls;
 // reusables
 var toHallway, toSara, toKeith; // doors
+var clues, clue, viewing = false;
 var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
 var enterGreg = false, goodbyeGreg = false, enterSara = false, goodbyeSara = false, enterKeith = false, goodbyeKeith = false;
@@ -36,13 +37,13 @@ var creditStyle = {
 // Dialogue text style
 var dialogueStyle = {
 	font: 'Libre Baskerville',
-	fontSize: 30,
-	fill: '#000000'
-	textWrap: 500;
+	fontSize: 35,
+	fill: '#000000',
+	align: 'left',
+	wordWrap: true,
+	wordWrapWidth: 700
 };
 
-var style = { font: 'bold 25pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 700 };
-var clues, clue, viewing = false;
 var Load = {
 	preload: function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);

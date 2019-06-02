@@ -9,6 +9,8 @@ var DaughterRoom = {
 		background = game.add.sprite(0, 0, 'daughterR');
 		toHallway = new Door(game, 200, 660, 'door', 1, 'Hallway', 0.7);
 		// player must be drawn last to be above everything
+		clues = game.add.group();
+		clue = clues.create()
 		player = new Player(game, 200, 400, 'ghost');
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;

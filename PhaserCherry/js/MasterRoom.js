@@ -1,4 +1,3 @@
-var photo;
 var MasterRoom = {
 	create: function(){
 		console.log('in the master room');
@@ -8,14 +7,16 @@ var MasterRoom = {
 		background = game.add.sprite(0, 0, 'masterR');
 		toHallway = new Door(game, 1100, 650, 'door', 0, 'Hallway', 0.7);
 		//create clue group
-		clues = game.add.group();
-		clues.enableBody = true;
-		// individual clue assets
-		clue = clues.create(740, 210, 'Wedding');
-		clue.scale.set(0.3, 0.3);
-		game.physics.arcade.enable(clue);
-		clue = clues.create(560, 430, 'ring');
-		game.physics.arcade.enable(clue);
+		// if(clues!= null){
+			clues = game.add.group();
+			clues.enableBody = true;
+			// individual clue assets
+			clue = clues.create(740, 210, 'Wedding');
+			clue.scale.set(0.3, 0.3);
+			game.physics.arcade.enable(clue);
+			clue = clues.create(560, 430, 'ring');
+			game.physics.arcade.enable(clue);
+		// }
 		//make the husbando
 		Greg = game.add.sprite(1050, 500, 'Greg');
 		GregMake();
@@ -157,7 +158,9 @@ function openDoor(){
 	toHallway.frame = 1;
 }
 function overDoor(p, d){
+	// console.log(d.name);
 	p.currentDoor = d.name;
+	// console.log("current door" + p.currentDoor);
 	playSpacebar(p);
 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
 		transition();
@@ -172,8 +175,9 @@ function transition(){
 	}
 }
 // when the player passes through a door, will take them to the corresponding room
-function leaveRoom(p){
-	game.state.start(p.currentDoor);
+function leaveRoom(){
+	console.log("going to " + player.currentDoor);
+	game.state.start(player.currentDoor);
 }
 // Spacebar management
 function playSpacebar(p){
