@@ -28,6 +28,7 @@ function Player(game, x, y, image){
 	this.controls = game.input.keyboard.createCursorKeys();
 	this.overDoor = false;
 	this.currentDoor = '';
+	this.lastRoom = '';
 }
 
 Player.prototype = Object.create(Phaser.Sprite.prototype);

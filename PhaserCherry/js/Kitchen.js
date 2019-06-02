@@ -1,16 +1,12 @@
-var DaughterRoom = {
+var Kitchen = {
 	create: function(){
 		this.RoomName = 'Sara\'s Room';
 		console.log('in Sara\'s room');
 		game.camera.fade(0x000000, 0);
-		background = game.add.sprite(0, 0, 'daughterR');
-		toHallway = new Door(game, 200, 660, 'door', 1, 'Hallway', 0.7, 0.7);
+		background = game.add.sprite(0, 0, 'kitchen');
+		toLivingRoom = new Door(game, 300, 690, 'door', 1, 'LivingRoom', 1.5, 0.3);
 		// player must be drawn last to be above everything
-		clues = game.add.group();
-		clues.enableBody = true;
-		clue = clues.create(850, 320, 'PhotoWall');
-		clue.scale.set(1.3, 1.3)
-		clue = clues.create(400, 350, 'Camera');
+		//make player
 		player = new Player(game, 200, 400, 'ghost');
 		player.alpha = 0.8;
 		// the spacebar will follow the player around
@@ -38,7 +34,7 @@ var DaughterRoom = {
 	 		}
 	 	}else if(!cutscenePlaying){
 	 		// console.log("no cutscene");
-			if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
+			if(game.physics.arcade.overlap(player, toLivingRoom, overDoor, null, this)){ 		
 	 			// to leave the room
 	 		}else{
 	 			clearPlayer();
@@ -52,6 +48,3 @@ var DaughterRoom = {
 // 		game.debug.body(photo);
 // 	}
 };
-//FUNCTIONS
-// https://phaser.io/examples/v2/sprites/overlap-without-physics
-//adding the word "start" into the function resulted in self-invocation

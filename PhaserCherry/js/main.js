@@ -10,5 +10,6 @@ game.state.add('Hallway', Hallway);
 game.state.add('DaughterRoom', DaughterRoom);
 game.state.add('SonRoom', SonRoom);
 game.state.add('LivingRoom', LivingRoom);
+game.state.add('Kitchen', Kitchen);
 game.state.add('MasterRoom', MasterRoom);
 game.state.start('Load');

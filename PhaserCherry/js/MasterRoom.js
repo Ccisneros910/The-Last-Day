@@ -5,7 +5,7 @@ var MasterRoom = {
 		this.RoomName = 'Master Room';
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'masterR');
-		toHallway = new Door(game, 1100, 650, 'door', 0, 'Hallway', 0.7);
+		toHallway = new Door(game, 1100, 650, 'door', 0, 'Hallway', 0.7, 0.7);
 		//create clue group
 		// if(clues!= null){
 			clues = game.add.group();
@@ -39,8 +39,8 @@ var MasterRoom = {
 		player = new Player(game, 200, 400, 'ghost');
 		player.alpha = 0;
 		// the spacebar will follow the player around
-		spacebarP = player.addChild(game.add.sprite(4, -80, 'space bar'));
-		spacebarP.scale.set(0.08, 0.08);
+		spacebarP = player.addChild(game.add.sprite(15, -130, 'space bar'));
+		spacebarP.scale.set(0.15, 0.15);
 		spacebarP.animations.add('dance');
 		spacebarP.alpha = 0;
 		spacebarP.anchor.x = 0.5;
@@ -82,6 +82,7 @@ var MasterRoom = {
 			game.time.events.add(Phaser.Timer.SECOND*5, GregCutscene, this);
 		}
 		cutscenePlaying = true;
+		player.time = 0;
 	},
 	update: function(){
 	 	// checks if player is overlapping with any clues
@@ -94,7 +95,6 @@ var MasterRoom = {
 	 				resetDBox();
 	 				cutscenePlaying = false;
 	 			}
-
 	 		}
 	 	}else if(!cutscenePlaying){
 	 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
@@ -158,9 +158,8 @@ function openDoor(){
 	toHallway.frame = 1;
 }
 function overDoor(p, d){
-	// console.log(d.name);
 	p.currentDoor = d.name;
-	// console.log("current door" + p.currentDoor);
+	// console.log("over door: " + p.currentDoor);
 	playSpacebar(p);
 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
 		transition();
@@ -169,10 +168,8 @@ function overDoor(p, d){
 //adding the word "start" into the function resulted in self-invocation
 function transition(){
 	// console.log('this function should not call!');
-	if(toHallway.frame == 1){
-		game.camera.onFadeComplete.addOnce(leaveRoom);
-		game.camera.fade(0x000000, 1000);
-	}
+	game.camera.onFadeComplete.addOnce(leaveRoom);
+	game.camera.fade(0x000000, 1000);
 }
 // when the player passes through a door, will take them to the corresponding room
 function leaveRoom(){

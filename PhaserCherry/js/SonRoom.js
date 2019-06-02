@@ -1,4 +1,3 @@
-var photo;
 var SonRoom = {
 	create: function(){
 		this.RoomName = 'Keith\'s Room';

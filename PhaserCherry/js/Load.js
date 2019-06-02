@@ -11,7 +11,7 @@ var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
 var player, controls;
 // reusables
-var toHallway, toSara, toKeith; // doors
+var toHallway, toSara, toKeith, toLivingRoom, toKitchen; // doors
 var clues, clue, viewing = false;
 var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
@@ -78,7 +78,7 @@ var Load = {
 		game.load.image('hallway', 'hallway.png');
 		game.load.image('daughterR', 'saraBedroom.png');
 		game.load.image('livingR', 'livingRoom.png');
-		game.load.image('testR', 'testRoom.png');
+		game.load.image('kitchen', 'kitchen.png');
 		// DIALOGUE LOADING
 		game.load.path = ('dialog/');
 		game.load.text('GregScenes', 'GregRoomScenes.json');
