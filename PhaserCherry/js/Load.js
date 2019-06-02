@@ -5,7 +5,7 @@ var GregTween, SaraTween, KeithTween;
 var GhostEmotes, GregEmotes, SaraEmotes, KeithEmotes;
 // cutscenes variables
 var SaraScene = 0, KeithScene = 0, GregScene = 0;
-var event = 0;
+var event = 0, nextEvent;
 var dialogue; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
@@ -36,8 +36,9 @@ var creditStyle = {
 // Dialogue text style
 var dialogueStyle = {
 	font: 'Libre Baskerville',
-	fontSize: 40,
+	fontSize: 30,
 	fill: '#000000'
+	textWrap: 500;
 };
 
 var style = { font: 'bold 25pt Arial', fill: 'black', align: 'left', wordWrap: true, wordWrapWidth: 700 };
@@ -66,16 +67,17 @@ var Load = {
 		game.load.image('ChefsHat', 'clueChefsHat.png');			// Keith Clues
 		game.load.image('CookBook', 'clueCookBook.png');
 		// game.load.image('glow', 'glowBall.png');
-		//Rooms
-		game.load.image('daughterR', 'RoomDaughter.png');
-		game.load.image('hallway', 'RoomHallway.png');
-		game.load.image('masterR', 'RoomMaster.jpg');
-		game.load.image('livingR', 'RoomLiving.jpg');
-		game.load.image('testR', 'testRoom.png');
 		//Misc
 		game.load.image('dBox', 'dialogueBox.png');
 		game.load.atlas('door', 'doors.png', 'doors.json');
 		game.load.atlas('space bar', 'atlasSpacebar.png', 'hashSpacebar.json');
+		//Rooms
+		game.load.path = ('assets/img/Rooms/');
+		game.load.image('masterR', 'masterBedroom.png');
+		game.load.image('hallway', 'hallway.png');
+		game.load.image('daughterR', 'saraBedroom.png');
+		game.load.image('livingR', 'livingRoom.png');
+		game.load.image('testR', 'testRoom.png');
 		// DIALOGUE LOADING
 		game.load.path = ('dialog/');
 		game.load.text('GregScenes', 'GregRoomScenes.json');

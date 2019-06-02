@@ -11,10 +11,10 @@ var MasterRoom = {
 		clues = game.add.group();
 		clues.enableBody = true;
 		// individual clue assets
-		clue = clues.create(300, 200, 'Wedding');
+		clue = clues.create(740, 210, 'Wedding');
 		clue.scale.set(0.3, 0.3);
 		game.physics.arcade.enable(clue);
-		clue = clues.create(1000, 500, 'ring');
+		clue = clues.create(560, 430, 'ring');
 		game.physics.arcade.enable(clue);
 		//make the husbando
 		Greg = game.add.sprite(1050, 500, 'Greg');
@@ -58,8 +58,8 @@ var MasterRoom = {
 		GhostEmotes.anchor.x = 0.5;
 		GhostEmotes.anchor.y = 0.5;
 		GhostEmotes.animations.add('neutral', [0], 0, false);
-		GhostEmotes.animations.add('cry', [1, 2], 2, true);
-		GhostEmotes.animations.add('surprise', [3, 4], 2, true);
+		GhostEmotes.animations.add('cry', [1, 2], 3, true);
+		GhostEmotes.animations.add('surprise', [3, 4], 3, true);
 		GhostEmotes.alpha = 0;
 		//Greg emotions
 		GregEmotes = dBox.addChild(game.add.sprite(100, 100, 'GregEmotions'));
@@ -67,8 +67,8 @@ var MasterRoom = {
 		GregEmotes.anchor.x = 0.5;
 		GregEmotes.anchor.y = 0.5;
 		GregEmotes.animations.add('neutral', [0], 0, false);
-		GregEmotes.animations.add('talk', [0, 1], 2, true);
-		GregEmotes.animations.add('cry', [2, 3], 2, true);
+		GregEmotes.animations.add('talk', [0, 1], 3, true);
+		GregEmotes.animations.add('cry', [2, 3], 3, true);
 		GregEmotes.alpha = 0;
 		// tell the user how to move
 		// fade in the screen
@@ -86,9 +86,14 @@ var MasterRoom = {
 	 	// checks if player is overlapping with any clues
 	 	player.time++;
 	 	if(cutscenePlaying){
-	 		
-	 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && event != null && player.time >50){
-	 			GregCutscene();
+	 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >50){
+	 			if(nextEvent!=null){
+	 				GregCutscene();
+	 			}else if(nextEvent == null){
+	 				resetDBox();
+	 				cutscenePlaying = false;
+	 			}
+
 	 		}
 	 	}else if(!cutscenePlaying){
 	 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
@@ -198,10 +203,9 @@ function unpausePlayer(p){
 }
 function resetDBox(){
 	dBox.alpha = 0;
-	if(dText!= ''){
-		// dText.destroy();
-		dText = '';
-	}
+	dText.text = '';
+	GregEmotes.alpha = 0;
+	GhostEmotes.alpha = 0;
 }
 function GregExit(){
 	GregFlip();
@@ -265,6 +269,8 @@ function GregCutscene(){
 		dText.text = dialogue[GregScene][event]['dialogue'];
 		player.time = 0;
 	}
+	nextEvent = dialogue[GregScene][event+1];
+	console.log(nextEvent);
 	//move to the next event IF exists
 	event++;
 }

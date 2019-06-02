@@ -11,16 +11,19 @@
 		},
 		{
 			"action" : "speak",
-			"speaker" : "ghost", 
+			"speaker" : "player",
 			"emotion" : "neutral",
 			"dialogue" : "I'm...I'm home."
 		},
 		{
+			"cutscene": "end",
 			"action" : "speak",
-			"speaker" : "ghost", 
+			"speaker" : "player", 
 			"emotion" : "surprise",
-			"dialogue" : "But how did I...",
-			"cutscene": "end"
+			"dialogue" : "But how did I..."
+		},
+		{
+
 		}
 	],
 	[
