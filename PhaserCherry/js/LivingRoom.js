@@ -1,13 +1,20 @@
 var LivingRoom = {
 	create: function(){
-		this.RoomName = 'Living Room'
-		console.log('in the living room');
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'livingR');
 
 		toHallway = new Door(game, 440, 600, 'door', 1, 'Hallway', 2, 1);
-		toKitchen = new Door(game, 1200, 650, 'door', 1, 'Kitchen', 0.5, 1.5);
-		player = new Player(game, 200, 400, 'ghost');
+		toHallway.alpha = 0;
+		toKitchen = new Door(game, 1200, 650, 'door', 1, 'Kitchen', 1, 1.5);
+		toKitchen.alpha = 1;
+		if(currentRoom == "Hallway"){
+			playerX = 250;
+			playerY = 400;
+		}else if(currentRoom == "Kitchen"){
+			playerX = 1000;
+			playerY = 350;
+		}
+		player = new Player(game, playerX, playerY, 'ghost');
 		player.alpha = 0.8;
 		// the spacebar will follow the player around
 		spacebarP = player.addChild(game.add.sprite(10, -130, 'space bar'));
@@ -20,6 +27,7 @@ var LivingRoom = {
 		// player.animations.play('spin');
 		// Box = game.add.sprite(200, 800, 'dialogue');
 		game.camera.flash(0x000000, 2000);
+		currentRoom = 'LivingRoom'
 	},
 	update: function(){
 	 	player.time++;

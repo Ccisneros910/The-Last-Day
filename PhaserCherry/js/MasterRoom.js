@@ -2,7 +2,6 @@ var MasterRoom = {
 	create: function(){
 		console.log('in the master room');
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		this.RoomName = 'Master Room';
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'masterR');
 		toHallway = new Door(game, 1100, 650, 'door', 0, 'Hallway', 0.7, 0.7);
@@ -36,7 +35,14 @@ var MasterRoom = {
 		// t01.chain(t02);
 		// t03.chain(t04);
 		// player must be drawn last to be above everything
-		player = new Player(game, 200, 400, 'ghost');
+		if(currentRoom == null){
+			playerX = 200;
+			playerY = 400;
+		}else if(currentRoom == Hallway){
+			playerX = 800;
+			playerY = 400;
+		}
+		player = new Player(game, playerX, playerY, 'ghost');
 		player.alpha = 0;
 		// the spacebar will follow the player around
 		spacebarP = player.addChild(game.add.sprite(15, -130, 'space bar'));
@@ -83,6 +89,7 @@ var MasterRoom = {
 		}
 		cutscenePlaying = true;
 		player.time = 0;
+		currentRoom = 'MasterRoom';
 	},
 	update: function(){
 	 	// checks if player is overlapping with any clues
@@ -136,7 +143,15 @@ function clueFound(p, g){
 		    if(g.key == 'Wedding'){
 		    	dText.text = "Till death do us part...Little did I know death would come so soon.";
 			}else if(g.key =='ring'){
-		    	dText.text = "Till death do us part...";
+		    	dText.text = "You wore this to show your faith to me, but now you are...";
+			}else if(g.key =='Camera'){
+		    	dText.text = "I want you to see much more of the world with this.";
+			}else if(g.key =='PhotoWall'){
+		    	dText.text = "You may not see the beauty in yourself, but you see it in everything else.";
+			}else if(g.key =='ChefsHat'){
+		    	dText.text = "Every stain is a reminder of every meal you have made.";
+			}else if(g.key =='CookBook'){
+		    	dText.text = "It's taken some work, but you have come up with some good things.";
 			}
 			// else if(g.key =='frame2'){
 		 //    	dText = game.add.text(320, 520, "Keith. You started out so small. You are so much bigger, but you've got so far to go. And I...", dialogueStyle);
@@ -169,7 +184,7 @@ function overDoor(p, d){
 function transition(){
 	// console.log('this function should not call!');
 	game.camera.onFadeComplete.addOnce(leaveRoom);
-	game.camera.fade(0x000000, 1000);
+	game.camera.fade(0x000000, 500);
 }
 // when the player passes through a door, will take them to the corresponding room
 function leaveRoom(){
@@ -192,9 +207,11 @@ function stopSpacebar(){
 }
 //Player conditional management
 function clearPlayer(){
-	player.overType = '';
-	player.currentFrame = false;
-	player.lastFrame = false;
+	if(player != null){
+		player.overType = '';
+		player.currentFrame = false;
+		player.lastFrame = false;
+	}
 }
 function pausePlayer(p){
 	player.speed = 0;
@@ -205,8 +222,18 @@ function unpausePlayer(p){
 function resetDBox(){
 	dBox.alpha = 0;
 	dText.text = '';
-	GregEmotes.alpha = 0;
-	GhostEmotes.alpha = 0;
+	if(GhostEmotes != null){
+		GhostEmotes.alpha = 0;
+	}
+	if(GregEmotes != null){
+		GregEmotes.alpha = 0;
+	}
+	if(SaraEmotes != null){
+		SaraEmotes.alpha = 0;
+	}
+	if(KeithEmotes != null){
+		KeithEmotes.alpha = 0;
+	}
 }
 function GregExit(){
 	GregFlip();

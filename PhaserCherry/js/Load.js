@@ -9,9 +9,9 @@ var event = 0, nextEvent;
 var dialogue; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
-var player, controls;
+var player, controls, currentRoom, playerX, playerY;
 // reusables
-var toHallway, toSara, toKeith, toLivingRoom, toKitchen; // doors
+var toHallway, toSara, toKeith, toLivingRoom, toKitchen, toMaster; // doors
 var clues, clue, viewing = false;
 var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
