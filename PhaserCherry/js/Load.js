@@ -4,9 +4,9 @@ var Sara, Keith, Greg;
 var GregTween, SaraTween, KeithTween;
 var GhostEmotes, GregEmotes, SaraEmotes, KeithEmotes;
 // cutscenes variables
-var SaraScene = 0, KeithScene = 0, GregScene = 0;
-var event = 0, nextEvent;
-var dialogue; // file to read from
+var SaraScene = 0, KeithScene = 0, GregScene = 0, currentScene = 0;
+var event = 0, nextEvent, curentEvent;
+var dialogue, tweenCheck; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
 var player, controls, currentRoom, playerX, playerY;

@@ -1,7 +1,6 @@
 [
 	[
 		{
-			"cutscene" :"start",
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "player", 
@@ -16,14 +15,52 @@
 			"dialogue" : "I'm...I'm home."
 		},
 		{
-			"cutscene": "end",
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "surprise",
-			"dialogue" : "But how did I..."
+			"dialogue" : "But how did I... get back into the room? The last thing I remember is-"
 		},
 		{
-
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "!!! This isn't my body! I'm...a ghost..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "This isn't my body! I'm...a ghost... How did this-Wait. Someone's coming!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "!!! Wait. Someone's coming!"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "player", 
+			"effect" : "y",
+			"result" : "100",
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Greg", 
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "1500"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "400",
+			"duration" : "3000"
 		}
 	],
 	[

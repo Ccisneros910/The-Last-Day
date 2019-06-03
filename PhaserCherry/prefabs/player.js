@@ -13,8 +13,8 @@ function Player(game, x, y, image){
 	this.body.setSize(80, 120, 35, 15);
 	this.anchor.x = 0.5;
 	this.anchor.y = 0.5;
-	this.body.drag.x = 650;
-	this.body.drag.y = 650;
+	this.body.drag.x = 900;
+	this.body.drag.y = 900;
 	this.speed = 400;
 	this.time = 0;
 	// conditionals
