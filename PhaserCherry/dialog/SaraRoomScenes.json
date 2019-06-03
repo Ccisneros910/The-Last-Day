@@ -1,0 +1,38 @@
+[
+	[
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "What happened to the room? Her room is never this messy."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "player", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "4000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Sara... Did I... Did I do this to you?"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Sara", 
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "3000"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "player", 
+			"effect" : "flip"
+		}
+	]
+]

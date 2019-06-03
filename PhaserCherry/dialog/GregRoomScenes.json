@@ -2,7 +2,6 @@
 	[
 		{
 			"action" : "tween",
-			"number" : "1",
 			"speaker" : "player", 
 			"effect" : "alpha",
 			"result" : "0.9",
@@ -23,24 +22,17 @@
 		{
 			"action" : "speak",
 			"speaker" : "player", 
-			"emotion" : "neutral",
-			"dialogue" : "!!! This isn't my body! I'm...a ghost..."
+			"emotion" : "cry",
+			"dialogue" : "!!! This isn't my body! How did this-"
 		},
 		{
 			"action" : "speak",
 			"speaker" : "player", 
-			"emotion" : "cry",
-			"dialogue" : "This isn't my body! I'm...a ghost... How did this-Wait. Someone's coming!"
-		},
-		{
-			"action" : "speak",
-			"speaker" : "player", 
-			"emotion" : "cry",
+			"emotion" : "surprise",
 			"dialogue" : "!!! Wait. Someone's coming!"
 		},
 		{
 			"action" : "tween",
-			"number" : "1",
 			"speaker" : "player", 
 			"effect" : "y",
 			"result" : "100",
@@ -48,7 +40,6 @@
 		},
 		{
 			"action" : "tween",
-			"number" : "1",
 			"speaker" : "Greg", 
 			"effect" : "alpha",
 			"result" : "1",
@@ -56,11 +47,35 @@
 		},
 		{
 			"action" : "tween",
-			"number" : "1",
 			"speaker" : "Greg", 
 			"effect" : "x",
-			"result" : "400",
+			"result" : "550",
 			"duration" : "3000"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "1050",
+			"duration" : "2500"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "alpha",
+			"result" : "0",
+			"duration" : "1500"
 		}
 	],
 	[

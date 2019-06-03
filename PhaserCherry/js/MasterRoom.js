@@ -227,6 +227,7 @@ function unpausePlayer(p){
 	p.speed = 400;
 }
 function resetDBox(){
+	console.log("clearing dialog");
 	dBox.alpha = 0;
 	dText.text = '';
 	if(GhostEmotes != null){
@@ -252,12 +253,12 @@ function GregClear(){
 		Greg = null;
 	}
 }
-function GregFlip(){
-	if(Greg!=null){
+function ObjFlip(obj){
+	if(obj!=null){
 		// Greg.kill();
 		// Greg = game.add.sprite(400, 500, 'Greg');
 		// GregMake();
-		Greg.scale.set(-1, 1);
+		obj.scale.set(-1, 1);
 	}
 }
 function GregMake(){
@@ -276,23 +277,18 @@ function GregCutscene(){
 		// remove spacebar as player cannot advance scene
 		stopSpacebar();
 		console.log("it is a tween");
-		if(dialogue[GregScene][event]['number'] == 1){
-			dBox.alpha = 0;
-			GregEmotes.alpha = 0;
-			GhostEmotes.alpha = 0;
-			// game.add.tween(dialogue[GregScene][event]['speaker']).to({dialogue[GregScene][event]['action'] : dialogue[GregScene][event]['result']}, dialogue[GregScene][event]['duration'], Phaser.Easing.Linear.None, true);
-			// tweenCheck = game.add.tween(player).to({alpha : 0.9}, 3000, Phaser.Easing.Linear.None, true);
-			console.log("CHECK CHECK: ");
-			console.log(this[dialogue[GregScene][event]['speaker']]);
-			console.log("CHECK CHECK 2: ");
-			if(dialogue[GregScene][event]['effect'] == "alpha"){
-				// CAN typecast the results and duratoin
-				tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({alpha : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-			}else if(dialogue[GregScene][event]['effect'] == "x"){
-				tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({x : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-			}else if(dialogue[GregScene][event]['effect'] == "y"){
-				tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({y : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-			}
+		dBox.alpha = 0;
+		GregEmotes.alpha = 0;
+		GhostEmotes.alpha = 0;
+		if(dialogue[GregScene][event]['effect'] == "alpha"){
+			// CAN typecast the results and duration, BUT NOT the property
+			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({alpha : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[GregScene][event]['effect'] == "x"){
+			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({x : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[GregScene][event]['effect'] == "y"){
+			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({y : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[GregScene][event]['effect'] == "flip"){
+			ObjFlip(this[dialogue[GregScene][event]['speaker']]);
 		}
 	}else if(dialogue[GregScene][event]['action'] == "speak"){
 		// play spacebar to indicate the player can advance scene
