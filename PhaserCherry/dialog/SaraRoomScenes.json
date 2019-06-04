@@ -11,8 +11,8 @@
 			"number" : "1",
 			"speaker" : "player", 
 			"effect" : "x",
-			"result" : "800",
-			"duration" : "4000"
+			"result" : "1000",
+			"duration" : "2000"
 		},
 		{
 			"action" : "speak",

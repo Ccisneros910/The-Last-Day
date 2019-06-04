@@ -13,6 +13,7 @@ var DaughterRoom = {
 		playerY = 450;
 		player = new Player(game, playerX, playerY, 'ghost');
 		player.alpha = 0.8;
+		console.log(player.x);
 		// the spacebar will follow the player around
 		spacebarP = player.addChild(game.add.sprite(10, -130, 'space bar'));
 		spacebarP.scale.set(0.15, 0.15);
@@ -43,27 +44,58 @@ var DaughterRoom = {
 		SaraEmotes.animations.add('cry', [2, 3], 3, true);
 		SaraEmotes.alpha = 0;
 
+		currentScene = SaraScene;
+		console.log("Sara Scene: " + SaraScene);
+		console.log("current Scene: " + currentScene);
 		cutscenePlaying = false;
-		game.camera.flash(0x000000, 2000);
 		currentRoom = 'DaughterRoom';
+		game.camera.flash(0x000000, 2000);
 	},
 	update: function(){
 	 	player.time++;
 	 	if(cutscenePlaying){
-	 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >50){
-	 			if(nextEvent!=null){
-	 				// GregCutscene();
-	 			}else if(nextEvent == null){
-	 				resetDBox();
-	 				cutscenePlaying = false;
+	 		// if there is another event
+	 		if(currentEvent == null){
+	 			// console.log("start of scene");
+				if(nextEvent != null){
+	 				CutscenePlay();
+				}
+	 		}else if(currentEvent != null){
+	 			if(currentEvent.action == "tween" ){
+	 				// console.log("tween running");
+	 				if(tweenCheck.isRunning == false && nextEvent != null){
+	 					// console.log("tween ended \n PLAYING NEXT EVENT");
+	 					CutscenePlay();
+	 				}else if(tweenCheck.isRunning == false && nextEvent == null){
+	 					// console.log("tween ended \n END OF SCENE");
+	 					cutsceneOff();
+	 					advanceCutscene();
+	 				}
+	 			}else if(currentEvent.action == "speak"){
+	 				// console.log("dialog running");
+	 				playSpacebar(player);
+				 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent != null){
+	 					// console.log("dialog ended \n PLAYING NEXT EVENT");
+	 					resetDBox();
+						CutscenePlay();
+					}else if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent == null){
+	 					// console.log("dialog ended \n END OF SCENE");
+						resetDBox();
+	 					cutsceneOff();
+	 					advanceCutscene();
+					}
 	 			}
 	 		}
 	 	}else if(!cutscenePlaying){
 	 		// console.log("no cutscene");
+	 		// console.log("Player's x: " + player.x);
+	 		console.log("Scene Playing: " + cutscenePlaying);
 			if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
 
 			}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
 	 			// to leave the room
+	 		}else if(SaraScene == 0 && player.x >= 700){
+	 			cutscenePlaying = true;
 	 		}else{
 	 			clearPlayer();
 				stopSpacebar();

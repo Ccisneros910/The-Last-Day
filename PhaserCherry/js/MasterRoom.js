@@ -29,6 +29,8 @@ var MasterRoom = {
 		}
 		player = new Player(game, playerX, playerY, 'ghost');
 		player.alpha = 0;
+		console.log(player);
+		console.log("Ghost x: " + player.x);
 		// the spacebar will follow the player around
 		spacebarP = player.addChild(game.add.sprite(15, -130, 'space bar'));
 		spacebarP.scale.set(0.15, 0.15);
@@ -64,68 +66,50 @@ var MasterRoom = {
 		GregEmotes.alpha = 0;
 		// tell the user how to move
 		// fade in the screen
-		game.camera.flash(0x000000, 2000);
-		game.camera.onFlashComplete.addOnce(GregCutscene);
-		if(GregScene == 0){
-		}
-		nextEvent = dialogue[GregScene][event];
-		console.log(nextEvent);
-		cutscenePlaying = true;
+		currentScene = GregScene;
+		nextEvent = dialogue[currentScene][event];
 		player.time = 0;
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
+		if(GregScene == 0){
+			game.camera.onFlashComplete.addOnce(cutsceneOn);
+		}
+		game.camera.flash(0x000000, 3000);
 	},
 	update: function(){
 	 	player.time++;
 	 	if(cutscenePlaying){
 	 		// if there is another event
 	 		if(currentEvent == null){
+	 			// console.log("start of scene");
 				if(nextEvent != null){
-	 				GregCutscene();
+	 				CutscenePlay();
 				}
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
+	 				// console.log("tween running");
 	 				if(tweenCheck.isRunning == false && nextEvent != null){
-	 					GregCutscene();
-	 				}else{
-	 					resetDBox();
-	 					cutscenePlaying = false;
+	 					// console.log("tween ended \n PLAYING NEXT EVENT");
+	 					CutscenePlay();
+	 				}else if(tweenCheck.isRunning == false && nextEvent == null){
+	 					// console.log("tween ended \n END OF SCENE");
+	 					cutsceneOff();
+	 					advanceCutscene();
 	 				}
 	 			}else if(currentEvent.action == "speak"){
+	 				// console.log("dialog running");
+	 				playSpacebar(player);
 				 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent != null){
-						GregCutscene();
-					}else{
+	 					// console.log("dialog ended \n PLAYING NEXT EVENT");
+	 					resetDBox();
+						CutscenePlay();
+					}else if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent == null){
+	 					// console.log("dialog ended \n END OF SCENE");
 						resetDBox();
-	 					cutscenePlaying = false;
+	 					cutsceneOff();
+	 					advanceCutscene();
 					}
 	 			}
-	 		}
-
-
-	 		if(nextEvent != null){
-		 		if(nextEvent.action == "tween"){
-		 			if(tweenCheck.isRunning == false){
-		 				console.log("NEXT TWEEN");
-		 				GregCutscene();
-		 			}else{
-		 				console.log("playing tween");
-		 			}
-		 		}else if(nextEvent.action == "speak"){
-		 			// console.log("character speaking");
-		 			if(tweenCheck.isRunning == false){
-		 				playSpacebar(player);
-				 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >50){
-					 		GregCutscene();
-					 	}
-					 }
-		 		}
-	 		}// if no more events left, wait till player
-	 		else if(nextEvent == null){
-		 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >50){
-		 			resetDBox();
- 					cutscenePlaying = false;
- 					GregScene++;
- 				}
 	 		}
 	 	} 
 	 	// If no cutscene, allow the player to move freely
@@ -289,46 +273,61 @@ function GregMake(){
 		Greg.alpha = 0;
 	}
 }
-
-function GregCutscene(){
+// CUTSCENE CONTROL
+function advanceCutscene(){
+	if(currentRoom == "MasterRoom"){
+		GregScene++;
+	}else if(currentRoom == "DaughterRoom"){
+		SaraScene++;
+	}else if(currentRoom == "Kitchen"){
+		KeithScene++;
+	}
+}
+function cutsceneOn(){
+	cutscenePlaying = true;
+}
+function cutsceneOff(){
+	cutscenePlaying = false;
+}
+function CutscenePlay(){
 	console.log("playing cutscene");
 	// console.log(dialogue[GregScene][event]['action']);
-	currentEvent = nextEvent;
-	if(dialogue[GregScene][event]['action'] == "tween"){
+	currentEvent = dialogue[currentScene][event];
+	if(dialogue[currentScene][event]['action'] == "tween"){
 		// remove spacebar as player cannot advance scene
 		stopSpacebar();
 		console.log("it is a tween");
 		dBox.alpha = 0;
 		GregEmotes.alpha = 0;
 		GhostEmotes.alpha = 0;
-		if(dialogue[GregScene][event]['effect'] == "alpha"){
+		if(dialogue[currentScene][event]['effect'] == "alpha"){
 			// CAN typecast the results and duration, BUT NOT the property
-			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({alpha : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-		}else if(dialogue[GregScene][event]['effect'] == "x"){
-			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({x : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-		}else if(dialogue[GregScene][event]['effect'] == "y"){
-			tweenCheck = game.add.tween(this[dialogue[GregScene][event]['speaker']]).to({y : Number(dialogue[GregScene][event]['result'])}, Number(dialogue[GregScene][event]['duration']), Phaser.Easing.Linear.None, true);
-		}else if(dialogue[GregScene][event]['effect'] == "flip"){
-			ObjFlip(this[dialogue[GregScene][event]['speaker']]);
+			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({alpha : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[currentScene][event]['effect'] == "x"){
+			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({x : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[currentScene][event]['effect'] == "y"){
+			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({y : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), Phaser.Easing.Linear.None, true);
+		}else if(dialogue[currentScene][event]['effect'] == "flip"){
+			ObjFlip(this[dialogue[currentScene][event]['speaker']]);
 		}
-	}else if(dialogue[GregScene][event]['action'] == "speak"){
+	}else if(dialogue[currentScene][event]['action'] == "speak"){
 		// play spacebar to indicate the player can advance scene
-			// console.log(this[dialogue[GregScene][event]['speaker']].this[dialogue[GregScene][event]['effect']]);
+			// console.log(this[dialogue[currentScene][event]['speaker']].this[dialogue[currentScene][event]['effect']]);
 		playSpacebar(player);
 		dBox.alpha = 1;
 		GhostEmotes.alpha = 0;
 		GregEmotes.alpha = 0;
-		if(dialogue[GregScene][event]['speaker'] == "player"){
+		if(dialogue[currentScene][event]['speaker'] == "player"){
 			GhostEmotes.alpha = 1;
-			GhostEmotes.animations.play(dialogue[GregScene][event]['emotion']);
-		}else if(dialogue[GregScene][event]['speaker'] == "Greg"){
+			GhostEmotes.animations.play(dialogue[currentScene][event]['emotion']);
+		}else if(dialogue[currentScene][event]['speaker'] == "Greg"){
 			GregEmotes.alpha = 1;
-			GregEmotes.animations.play(dialogue[GregScene][event]['emotion']);
+			GregEmotes.animations.play(dialogue[currentScene][event]['emotion']);
 		}
-		dText.text = dialogue[GregScene][event]['dialogue'];
+		dText.text = dialogue[currentScene][event]['dialogue'];
 		player.time = 0;
 	}
-	nextEvent = dialogue[GregScene][event+1];
+	nextEvent = dialogue[currentScene][event+1];
 	console.log("NEXT EVENT: ");
 	// console.log(nextEvent);
 	//move to the next event IF exists
