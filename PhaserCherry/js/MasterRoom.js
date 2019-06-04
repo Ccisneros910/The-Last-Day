@@ -263,6 +263,7 @@ function ObjFlip(obj){
 		// Greg.kill();
 		// Greg = game.add.sprite(400, 500, 'Greg');
 		// GregMake();
+		if(obj)
 		obj.scale.set(-1, 1);
 	}
 }

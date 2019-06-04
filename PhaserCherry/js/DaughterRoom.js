@@ -9,6 +9,9 @@ var DaughterRoom = {
 		clue = clues.create(850, 320, 'PhotoWall');
 		clue.scale.set(1.3, 1.3)
 		clue = clues.create(400, 350, 'Camera');
+		// make Sara
+		Sara = game.add.sprite(1050, 500, 'Sara');
+		// make player
 		playerX = 380;
 		playerY = 450;
 		player = new Player(game, playerX, playerY, 'ghost');
@@ -25,6 +28,12 @@ var DaughterRoom = {
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
 		dText = game.add.text(320, 520, '', dialogueStyle);
+		dialogue = JSON.parse(game.cache.getText('SaraScenes'));
+		event = 0;
+		currentScene = SaraScene;
+		currentEvent = null;
+		nextEvent = dialogue[currentScene][event];
+
 		//emotions
 		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
 		GhostEmotes.scale.set(1, 1);
@@ -44,7 +53,6 @@ var DaughterRoom = {
 		SaraEmotes.animations.add('cry', [2, 3], 3, true);
 		SaraEmotes.alpha = 0;
 
-		currentScene = SaraScene;
 		console.log("Sara Scene: " + SaraScene);
 		console.log("current Scene: " + currentScene);
 		cutscenePlaying = false;
@@ -89,7 +97,7 @@ var DaughterRoom = {
 	 	}else if(!cutscenePlaying){
 	 		// console.log("no cutscene");
 	 		// console.log("Player's x: " + player.x);
-	 		console.log("Scene Playing: " + cutscenePlaying);
+	 		console.log("Scene Playing: " + cutscenePlaying + "; Sara Scene: " + SaraScene);
 			if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
 
 			}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
