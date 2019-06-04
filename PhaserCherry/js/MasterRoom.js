@@ -65,13 +65,8 @@ var MasterRoom = {
 		// tell the user how to move
 		// fade in the screen
 		game.camera.flash(0x000000, 2000);
-		// set timer before door opens
-		// game.time.events.add(Phaser.Timer.SECOND*5, openDoor, this);
-		// game.time.events.add(Phaser.Timer.SECOND*13, GregExit, this);
+		game.camera.onFlashComplete.addOnce(GregCutscene);
 		if(GregScene == 0){
-			console.log("going to cutscene fnc in 5");
-			// game.time.events.add(Phaser.Timer.SECOND*5, GregCutscene, this);
-			GregCutscene();
 		}
 		nextEvent = dialogue[GregScene][event];
 		console.log(nextEvent);
@@ -84,6 +79,29 @@ var MasterRoom = {
 	 	player.time++;
 	 	if(cutscenePlaying){
 	 		// if there is another event
+	 		if(currentEvent == null){
+				if(nextEvent != null){
+	 				GregCutscene();
+				}
+	 		}else if(currentEvent != null){
+	 			if(currentEvent.action == "tween" ){
+	 				if(tweenCheck.isRunning == false && nextEvent != null){
+	 					GregCutscene();
+	 				}else{
+	 					resetDBox();
+	 					cutscenePlaying = false;
+	 				}
+	 			}else if(currentEvent.action == "speak"){
+				 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent != null){
+						GregCutscene();
+					}else{
+						resetDBox();
+	 					cutscenePlaying = false;
+					}
+	 			}
+	 		}
+
+
 	 		if(nextEvent != null){
 		 		if(nextEvent.action == "tween"){
 		 			if(tweenCheck.isRunning == false){
@@ -106,9 +124,12 @@ var MasterRoom = {
 		 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >50){
 		 			resetDBox();
  					cutscenePlaying = false;
+ 					GregScene++;
  				}
 	 		}
-	 	}else if(!cutscenePlaying){
+	 	} 
+	 	// If no cutscene, allow the player to move freely
+	 	else if(!cutscenePlaying){
 	 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
 	 			// checks if player is overlapping with any clues
 	 		}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
