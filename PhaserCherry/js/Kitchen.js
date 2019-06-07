@@ -12,12 +12,11 @@ var Kitchen = {
 		clue.scale.set(1.5, 1.5);
 		clue.anchor.x = 0.5;
 		clue.anchor.y = 1;
-		game.physics.arcade.enable(clue);
-		clue = clues.create(1050, 450, 'CookBook');
+		cCookBook = clues.create(1050, 450, 'CookBook');
 		clue.scale.set(1.5, 1.5);
 		clue.anchor.x = 0.5;
 		clue.anchor.y = 1;
-		game.physics.arcade.enable(clue);
+		// game.physics.arcade.enable(clue);
 		// player must be drawn last to be above everything
 		//make player
 		player = new Player(game, 300, 500, 'ghost');

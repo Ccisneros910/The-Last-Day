@@ -2,16 +2,35 @@ var DaughterRoom = {
 	create: function(){
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'daughterR');
-		toHallway = new Door(game, 200, 660, 'door', 1, 'Hallway', 0.7, 0.7);
-		// player must be drawn last to be above everything
+		toHallway = new Door(game, 255, 630, 'door', 1, 'Hallway', 1, 1);
+		// Spawn or don't spawn Sara depending on which how much of her story is done
 		clues = game.add.group();
 		clues.enableBody = true;
-		clue = clues.create(850, 320, 'PhotoWall');
-		clue.scale.set(1.3, 1.3)
-		clue = clues.create(400, 350, 'Camera');
+		// made before Sara to be behind her
+		cPhotoWall = clues.create(850, 320, 'PhotoWall');
+		cPhotoWall.scale.set(1.3, 1.3)
+		if(SaraScene == 0){
+			Sara = game.add.sprite(260, 650, 'Sara');
+			Sara.alpha = 0;
+		}else if(SaraScene == 1){
+			Sara = game.add.sprite(800, 650, 'Sara');
+		}else{
+			Sara = null;
+		}
+		if(Sara != null){
+			Sara.anchor.x = 0.5;
+			Sara.anchor.y = 1;
+		}
+		// Sara's sequence is done, don't make the camera
+		if(SaraScene <=1){
+			cCamera = clues.create(400, 450, 'Camera');
+			cCamera.anchor.x = 0.5;
+			cCamera.anchor.y = 0.5;
+		}
 		// make Sara
-		Sara = game.add.sprite(1050, 500, 'Sara');
+
 		// make player
+		// player must be drawn last to be above everything
 		playerX = 380;
 		playerY = 450;
 		player = new Player(game, playerX, playerY, 'ghost');
@@ -32,7 +51,9 @@ var DaughterRoom = {
 		event = 0;
 		currentScene = SaraScene;
 		currentEvent = null;
-		nextEvent = dialogue[currentScene][event];
+		if(SaraScene<=2){
+			nextEvent = dialogue[currentScene][event];
+		}
 
 		//emotions
 		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
@@ -51,8 +72,10 @@ var DaughterRoom = {
 		SaraEmotes.animations.add('neutral', [0], 0, false);
 		SaraEmotes.animations.add('talk', [0, 1], 3, true);
 		SaraEmotes.animations.add('cry', [2, 3], 3, true);
+		SaraEmotes.animations.add('angry', [4, 5], 3, true);
 		SaraEmotes.alpha = 0;
 
+		console.log("Entering Sara's room!!!");
 		console.log("Sara Scene: " + SaraScene);
 		console.log("current Scene: " + currentScene);
 		cutscenePlaying = false;
@@ -67,6 +90,7 @@ var DaughterRoom = {
 	 			// console.log("start of scene");
 				if(nextEvent != null){
 	 				CutscenePlay();
+	 				player.speed = 0;
 				}
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
@@ -75,34 +99,37 @@ var DaughterRoom = {
 	 					// console.log("tween ended \n PLAYING NEXT EVENT");
 	 					CutscenePlay();
 	 				}else if(tweenCheck.isRunning == false && nextEvent == null){
-	 					// console.log("tween ended \n END OF SCENE");
+	 					console.log("tween ended \n END OF SCENE");
 	 					cutsceneOff();
 	 					advanceCutscene();
+	 					player.speed = 400;
 	 				}
 	 			}else if(currentEvent.action == "speak"){
 	 				// console.log("dialog running");
 	 				playSpacebar(player);
-				 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent != null){
+				 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >35 && nextEvent != null){
 	 					// console.log("dialog ended \n PLAYING NEXT EVENT");
 	 					resetDBox();
 						CutscenePlay();
-					}else if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >20 && nextEvent == null){
-	 					// console.log("dialog ended \n END OF SCENE");
+					}else if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >35 && nextEvent == null){
+	 					console.log("dialog ended \n END OF SCENE");
 						resetDBox();
+	 					console.log("cutscenePlaying" + cutscenePlaying);
 	 					cutsceneOff();
+	 					console.log("cutscenePlaying" + cutscenePlaying);
 	 					advanceCutscene();
+	 					player.speed = 400;
 					}
 	 			}
 	 		}
 	 	}else if(!cutscenePlaying){
-	 		// console.log("no cutscene");
-	 		// console.log("Player's x: " + player.x);
 	 		console.log("Scene Playing: " + cutscenePlaying + "; Sara Scene: " + SaraScene);
 			if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
 
 			}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
 	 			// to leave the room
-	 		}else if(SaraScene == 0 && player.x >= 700){
+	 		}else if(SaraScene == 0 && player.x >= 450){
+	 			// will  not 
 	 			cutscenePlaying = true;
 	 		}else{
 	 			clearPlayer();

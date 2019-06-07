@@ -5,6 +5,7 @@
 			"speaker" : "player", 
 			"effect" : "alpha",
 			"result" : "0.9",
+			"easing" : "Phasing.Easing.Linear.None()",
 			"duration" : "3000"
 		},
 		{
@@ -23,18 +24,19 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "cry",
-			"dialogue" : "!!! This isn't my body! How did this-"
+			"dialogue" : "Wait...This- this isn't my body. How did this-"
 		},
 		{
 			"action" : "speak",
-			"speaker" : "player", 
+			"speaker" : "player",
 			"emotion" : "surprise",
 			"dialogue" : "!!! Wait. Someone's coming!"
 		},
 		{
 			"action" : "tween",
-			"speaker" : "player", 
+			"speaker" : "player",
 			"effect" : "y",
+			"easing" : "Phaser.Easing.Bounce.Out()",
 			"result" : "100",
 			"duration" : "1000"
 		},
@@ -53,19 +55,117 @@
 			"duration" : "3000"
 		},
 		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "Oh Bob..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "Greg! Can you-"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "player", 
+			"effect" : "y",
+			"result" : "450",
+			"duration" : "750"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "You can see me?"
+		},
+		{
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "flip"
 		},
 		{
 			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "Oh Bob, I wish..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "I'm trying to stay strong for the kids. Sara is taking your-"
+		},
+		{
+			"action" : "speak",
 			"speaker" : "Greg", 
 			"emotion" : "cry",
-			"dialogue" : "..."
+			"dialogue" : "Your death...hard. She hasn't used her camera in weeks. And she won't talk to me about it."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "No..."
 		},
 		{
 			"action" : "tween",
 			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "And Keith, he's upset that you're not here. He doesn't quite get why you're not coming back."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "He keeps saying how he needs his sous-chef. He misses your help."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "I wish you were here."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "I'm sorry Greg."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
 			"effect" : "x",
 			"result" : "1050",
 			"duration" : "2500"
@@ -76,36 +176,227 @@
 			"effect" : "alpha",
 			"result" : "0",
 			"duration" : "1500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "I...I should check on the kids."
 		}
 	],
 	[
 		{
-			"speaker" : "neptune",
-			"dialog" : "See now, how men lay blame upon us gods for what is after all nothing but their own folly.",
-			"newSpeaker" : "true"
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "Bob...did you hear me?"
 		},
 		{
-			"speaker" : "neptune",
-			"dialog" : "Look at Aegisthus; he must needs make love to Agamemnon's wife unrighteously and then kill Agamemnon, though he knew it would be the death of him."
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "What?"
 		},
-		{	
-			"speaker" : "minerva",
-			"dialog" : "Father, son of Saturn, King of kings, it served Aegisthus right, and so it would any one else who does as he did; but Aegisthus is neither here nor there.",
-			"newSpeaker" : "true"
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "Sara has her camera...She told me she hasn't taken any pictures, but, at least she's not ignoring it."
 		},
-		{	
-			"speaker" : "minerva",
-			"dialog" : "It is for Ulysses that my heart bleeds, when I think of his sufferings in that lonely sea-girt island, far away, poor man, from all his friends."
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "And Keith somehow managed to get all of his cooking gear. Looks like he won't need a sous-chef anymore."
 		},
-		{	
-			"speaker" : "jove",
-			"dialog" : "My child, what are you talking about? How can I forget Ulysses than whom there is no more capable man on earth, nor more liberal in his offerings to the immortal gods that live in heaven?",
-			"newSpeaker" : "true"
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "The kids are doing a little better today."
 		},
-		{	
-			"speaker" : "minerva",
-			"dialog" : "If, then, the gods now mean that Ulysses should get home, we should first send Mercury to the Ogygian island to tell Calypso that we have made up our minds and that he is to return.",
-			"newSpeaker" : "true"
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "I only wish I could say the same. The thought of moving on so soon after we just got married, it doesn't feel right."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cRing", 
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "I don't know if I can give you up quite yet."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "Greg, I know it's hard. I don't want to give you up either. But you have to *let me go*."
 		}
+	],
+	[
+		{
+			"action" : "tween",
+			"speaker" : "cRing", 
+			"effect" : "x",
+			"result" : "450",
+			"duration" : "750"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "!!!"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "The ring!"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "750",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "How did-"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "750",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "750",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "Bob...Are you here?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "Are you the reason the kids are feeling better?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "Even now you're still helping me. How am I so lucky to have you?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "To have had you..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "Bob...what now?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "I think..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "I think it's time for our chapter to come to a *close*, Greg."
+		}
+	],
+	[
+		{
+			"action" : "tween",
+			"speaker" : "cRing", 
+			"effect" : "x",
+			"result" : "450",
+			"duration" : "750"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "So that's it..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "This is goodbye."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "Thank you Bob. I love you."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "nuetral",
+			"dialogue" : "I love you too."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "nuetral",
+			"dialogue" : "Goodbye. I'm glad I got to see you all one last time"
+		},
 	]
 ]

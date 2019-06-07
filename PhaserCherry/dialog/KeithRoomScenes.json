@@ -1,7 +1,18 @@
 [
 	[
 		{
-			
-		}
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : ""
+		},
+		{
+			"action" : "tween",
+			"speaker" : "player",
+			"effect" : "alpha",
+			"result" : "0.9",
+			"easing" : "Phasing.Easing.Linear.None()",
+			"duration" : "3000"
+		},
 	]
 ]

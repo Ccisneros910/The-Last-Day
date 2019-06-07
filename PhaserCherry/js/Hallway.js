@@ -6,15 +6,16 @@ var Hallway = {
 		// background.scale.setTo(1, 1); // not wide enough to fit screen
 		doors = game.add.group();
 		doors.enableBody = true;
-		toMaster = new Door(game, 150, 600, 'door', 1, 'MasterRoom', 1, 0.3);
+		toMaster = new Door(game, 150, 700, 'door', 1, 'MasterRoom', 1.5, 0.5);
 		toMaster.frame = 1;
-		toSara = new Door(game, 370, 500, 'door', 1, 'DaughterRoom', 0.5, 0.5);
-		toSara.frame = 1;
-		toKeith = new Door(game, 800, 500, 'door', 1, 'SonRoom', 0.5, 0.5);
-		toKeith.frame = 1;
-		toLivingRoom = new Door(game, 1000, 700, 'door', 1, 'LivingRoom', 1.8, 0.4);
+		toMaster.alpha= 0;
+		toSara = new Door(game, 450, 550, 'door', 1, 'DaughterRoom', 1, 1);
+		toSara.frame = 2;
+		toKeith = new Door(game, 825, 550, 'door', 1, 'SonRoom', 1, 1);
+		toKeith.frame = 2;
+		toLivingRoom = new Door(game, 970, 720, 'door', 1, 'LivingRoom', 4.5, 0.5);
 		toLivingRoom.frame = 1;
-		toLivingRoom.alpha = 1;
+		toLivingRoom.alpha = 0;
 		// toLivingRoom.alpha = 0;
 		// player must be drawn last to be above everything
 		if(currentRoom == "MasterRoom"){

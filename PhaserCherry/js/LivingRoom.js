@@ -26,6 +26,12 @@ var LivingRoom = {
 		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
 		// player.animations.play('spin');
 		// Box = game.add.sprite(200, 800, 'dialogue');
+		if(KeithScene < 2){
+			clues = game.add.group();
+			cChefsHat = clues.create(200, 600, 'ChefsHat');
+			cChefsHat.anchor.x = 0.5;
+			cChefsHat.anchor.y = 0.5;
+		}
 		game.camera.flash(0x000000, 2000);
 		currentRoom = 'LivingRoom'
 	},

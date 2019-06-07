@@ -11,7 +11,7 @@
 			"number" : "1",
 			"speaker" : "player", 
 			"effect" : "x",
-			"result" : "1000",
+			"result" : "700",
 			"duration" : "2000"
 		},
 		{
@@ -22,17 +22,297 @@
 		},
 		{
 			"action" : "tween",
-			"number" : "1",
 			"speaker" : "Sara", 
-			"effect" : "alpha",
-			"result" : "1",
-			"duration" : "3000"
+			"effect" : "flip"
 		},
 		{
 			"action" : "tween",
-			"number" : "1",
+			"speaker" : "Sara", 
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "!!!"
+		},
+		{
+			"action" : "tween",
 			"speaker" : "player", 
+			"effect" : "y",
+			"result" : "200",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "950",
+			"duration" : "3100"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "Bob. I had just gotten to know you, and now you have to say goodbye?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "All of these photos...are here because of you."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "I wanted to see so much more, but... without you... I don't-."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "cry",
+			"dialogue" : "I can't-"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "Sara! No!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "You love taking photos. You can't stop just because I'm gone."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "I only helped you get started. You did all of this by yourself."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "angry",
+			"dialogue" : "I-I don't even want to look at all of this."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cPhotoWall", 
+			"effect" : "y",
+			"result" : "500",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
 			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "600",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "neutral",
+			"dialogue" : "Ugh! I can't stand watching you like this. I need to do something to *lift* your spirit."
+		}
+	],
+	[
+		{
+			"action" : "tween",
+			"speaker" : "cPhotoWall", 
+			"effect" : "y",
+			"result" : "320",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "!!!"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "What- how did-"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "What's going on?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "Bob...are you there?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "surprise",
+			"dialogue" : "Yes! Yes Sara! I'm here!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player", 
+			"emotion" : "cry",
+			"dialogue" : "You're not alone. I'm here. I can hear you. And I'm so sorry that I'm- That I can't..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "angry",
+			"dialogue" : "Ugh! Of course he's not here! I'm so stupid. He's gone! And he's never coming back!" 
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "neutral",
+			"dialogue" : "..."  
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara", 
+			"emotion" : "cry",
+			"dialogue" : "I just want to know... What do I do without you? You helped me figure out so much. What do I do now?"  
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Oh Sara...I want you to keep doing what makes you happy, and... I hope *taking pictures* does that. I know it does that."
+		}
+	],
+	[
+		{
+			"action" : "tween",
+			"speaker" : "cCamera", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cCamera", 
+			"effect" : "x",
+			"result" : "700",
+			"duration" : "750"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "neutral",
+			"dialogue" : "My camera..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "neutral",
+			"dialogue" : "I got this a year ago. And we've been together ever since."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "neutral",
+			"dialogue" : "I want to take more pictures, but I'm scared to do it alone."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "cry",
+			"dialogue" : "...but this is what you want...isn't it Bob?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "surprise",
+			"dialogue" : "!"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cCamera", 
+			"effect" : "alpha",
+			"result" : "0",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "250",
+			"duration" : "2500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Sara",
+			"emotion" : "neutral",
+			"dialogue" : "I'll try."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "alpha",
+			"result" : "0",
+			"duration" : "1500"
 		}
 	]
 ]

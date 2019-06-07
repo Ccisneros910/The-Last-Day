@@ -13,6 +13,8 @@ var player, controls, currentRoom, playerX, playerY;
 // reusables
 var toHallway, toSara, toKeith, toLivingRoom, toKitchen, toMaster; // doors
 var clues, clue, viewing = false;
+// clue list
+var cRing, cWeddingPhoto, cCamera, cPhotoWall, cCookBook, cChefsHat;
 var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
 var enterGreg = false, goodbyeGreg = false, enterSara = false, goodbyeSara = false, enterKeith = false, goodbyeKeith = false;
@@ -70,7 +72,7 @@ var Load = {
 		// game.load.image('glow', 'glowBall.png');
 		//Misc
 		game.load.image('dBox', 'dialogueBox.png');
-		game.load.atlas('door', 'doors.png', 'doors.json');
+		game.load.atlas('door', 'doorSheet.png', 'doorSheet.json');
 		game.load.atlas('space bar', 'atlasSpacebar.png', 'hashSpacebar.json');
 		//Rooms
 		game.load.path = ('assets/img/Rooms/');
