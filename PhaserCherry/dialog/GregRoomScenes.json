@@ -91,10 +91,17 @@
 			"effect" : "flip"
 		},
 		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "550",
+			"duration" : "1000"
+		},
+		{
 			"action" : "speak",
 			"speaker" : "player", 
-			"emotion" : "surprise",
-			"dialogue" : "..."
+			"emotion" : "cry",
+			"dialogue" : "No. Of course he can't..."
 		},
 		{
 			"action" : "speak",
@@ -106,19 +113,19 @@
 			"action" : "speak",
 			"speaker" : "Greg", 
 			"emotion" : "neutral",
-			"dialogue" : "I'm trying to stay strong for the kids. Sara is taking your-"
+			"dialogue" : "I'm trying to stay strong for the kids. Sara is taking your death hard."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
 			"emotion" : "cry",
-			"dialogue" : "Your death...hard. She hasn't used her camera in weeks. And she won't talk to me about it."
+			"dialogue" : "She hasn't touched her camera at all since you left. And she won't talk to me about it."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "cry",
-			"dialogue" : "No..."
+			"dialogue" : "Oh Sara."
 		},
 		{
 			"action" : "tween",
@@ -397,6 +404,6 @@
 			"speaker" : "player", 
 			"emotion" : "nuetral",
 			"dialogue" : "Goodbye. I'm glad I got to see you all one last time"
-		},
+		}
 	]
 ]

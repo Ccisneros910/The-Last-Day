@@ -4,15 +4,150 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "neutral",
-			"dialogue" : ""
+			"dialogue" : "Oh Keith. You spend more time in the kitchen than in your own room."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "Aright! Where is my cookbook? I need to see what I'm going to make for Bob."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Keith, what are you trying to do?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : " I need to pick a recipe that will help wake up Bob!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "cry",
+			"dialogue" : "Oh Keith, ."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "angry",
+			"dialogue" : "But first! What do I cook? I should grab my cookbook."
 		},
 		{
 			"action" : "tween",
-			"speaker" : "player",
-			"effect" : "alpha",
-			"result" : "0.9",
-			"easing" : "Phasing.Easing.Linear.None()",
-			"duration" : "3000"
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1500"
 		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "Hmmmm. I could've sworn my cookbook was in here."
+		}
+	],
+	[
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Here you go Keith."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "!!!"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1000"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Here you are! Were you hiding from me?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Let's see. Bob and I made a lot of things, buuut I know his favorite! Chocolate chip cookies!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "Oh wait! I can't start cooking without my chefs hat! Where did I leave it?"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "surprise",
+			"dialogue" : "Didn't I see that on the way here?"
+		}
+	],
+	[
+		{
+			
+		}
 	]
 ]

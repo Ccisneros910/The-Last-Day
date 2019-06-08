@@ -9,7 +9,7 @@ var event = 0, nextEvent = null, currentEvent = null;
 var dialogue, tweenCheck; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
 // player variables
-var player, controls, currentRoom, playerX, playerY;
+var player, controls, currentRoom, playerX, playerY, hatHeld;
 // reusables
 var toHallway, toSara, toKeith, toLivingRoom, toKitchen, toMaster; // doors
 var clues, clue, viewing = false;
@@ -62,6 +62,7 @@ var Load = {
 		game.load.image('Sara', 'SaraOverworldSprite.png');
 		game.load.atlas('SaraEmotions', 'saraEmotions.png', 'saraEmotions.json');
 		game.load.image('Keith', 'keithOverworldSprite.png');
+		game.load.atlas('emotes', 'characterEmotions.png', 'characterEmotions.json');
 		//Clues
 		game.load.image('Wedding', 'clueWeddingPortrait.png');	// Greg clues
 		game.load.image('ring', 'clueRing.png');

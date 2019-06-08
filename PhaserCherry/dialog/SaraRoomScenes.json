@@ -49,8 +49,8 @@
 			"action" : "tween",
 			"speaker" : "Sara", 
 			"effect" : "x",
-			"result" : "950",
-			"duration" : "3100"
+			"result" : "800",
+			"duration" : "2800"
 		},
 		{
 			"action" : "speak",
@@ -129,7 +129,7 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "neutral",
-			"dialogue" : "Ugh! I can't stand watching you like this. I need to do something to *lift* your spirit."
+			"dialogue" : "I can't stand watching you like this. I need to do something to *lift* your spirit."
 		}
 	],
 	[
