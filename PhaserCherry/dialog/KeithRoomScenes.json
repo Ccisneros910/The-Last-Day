@@ -101,6 +101,20 @@
 			"speaker" : "Keith",
 			"emotion" : "neutral",
 			"dialogue" : "Hmmmm. I could've sworn my cookbook was in here."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip",
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "550",
+			"duration" : "1000"
 		}
 	],
 	[
@@ -119,6 +133,12 @@
 			"duration" : "1000"
 		},
 		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "neutral",
@@ -128,7 +148,10 @@
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "flip"
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1500",
+			"animation" : "walk"
 		},
 		{
 			"action" : "tween",
@@ -136,7 +159,8 @@
 			"speaker" : "Keith", 
 			"effect" : "x",
 			"result" : "900",
-			"duration" : "1000"
+			"duration" : "10",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -148,7 +172,7 @@
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "talk",
-			"dialogue" : "Let's see. Bob and I made a lot of things, buuut I know his favorite! Chocolate chip cookies!"
+			"dialogue" : "Let's see. I know just the thing to help Bob feel better, chocolate chip cookies!"
 		},
 		{
 			"action" : "speak",
@@ -200,13 +224,55 @@
 			"speaker" : "cChefsHat", 
 			"effect" : "x",
 			"result" : "600",
-			"duration" : "500"
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "neutral",
-			"dialogue" : "Alright, now the chef can finally start his work."
+			"dialogue" : "There's my hat!"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "800",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "10",
+			"animation" : "stand"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "Alright! Now I have all my gear. Now I just to need to wash my hands and prep the ingredients..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Aw, Keith. I didn't have to remind you. Maybe you don't need my help anymore."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Yeah. You'll be fine. Besides, you have Greg and Sara to help too."
 		}
 	]
 ]

@@ -119,7 +119,7 @@
 			"action" : "speak",
 			"speaker" : "Greg", 
 			"emotion" : "neutral",
-			"dialogue" : "Oh Bob, I wish..."
+			"dialogue" : "Oh Bob, I could use some help right now."
 		},
 		{
 			"action" : "speak",
@@ -195,7 +195,7 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "1020",
+			"result" : "850",
 			"duration" : "2500",
 			"animation" : "walk"
 		},
@@ -203,8 +203,69 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
+			"result" : "850",
+			"duration" : "10",
+			"animation" : "stand"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "2500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "10",
+			"animation" : "stand"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cRing",
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
 			"result" : "1020",
-			"duration" : "50",
+			"duration" : "2000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "1020",
+			"duration" : "10",
 			"animation" : "stand"
 		},
 		{
@@ -222,6 +283,12 @@
 		}
 	],
 	[
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "talk",
+			"dialogue" : "..."
+		},
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
@@ -260,14 +327,23 @@
 		},
 		{
 			"action" : "tween",
-			"speaker" : "cRing", 
-			"effect" : "alpha",
-			"result" : "1",
-			"duration" : "500"
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "400",
+			"duration" : "1000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "400",
+			"duration" : "1000",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
-			"speaker" : "Greg", 
+			"speaker" : "Greg",
 			"emotion" : "cry",
 			"dialogue" : "I don't know if I can give you up quite yet."
 		},
@@ -403,7 +479,14 @@
 			"speaker" : "cRing", 
 			"effect" : "x",
 			"result" : "450",
-			"duration" : "750"
+			"duration" : "750",
+			"animation" : "close"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
 		},
 		{
 			"action" : "speak",
