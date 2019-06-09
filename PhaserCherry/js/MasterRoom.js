@@ -66,6 +66,11 @@ var MasterRoom = {
 		dialoguePlaying = false;
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
+		spacebarB = dBox.addChild(game.add.sprite(15, -130, 'space bar'));
+		spacebarB.alpha = 0;
+		spacebarB.anchor.x = 0.5;
+		spacebarB.anchor.y = 0.5;
+
 		dText = game.add.text(320, 520, '', dialogueStyle);
 		//place emotions in box but turn off
 		// Ghost emotions
@@ -91,6 +96,8 @@ var MasterRoom = {
 		currentScene = GregScene;
 		nextEvent = dialogue[currentScene][event];
 		player.time = 0;
+		messageBG = game.add.sprite(0, 0, 'message');
+		messageBG.alpha = 0;
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
 		if(GregScene == 0 && SaraScene == 0 && KeithScene == 0){
@@ -322,9 +329,17 @@ function ObjFlip(obj){
 		// GregMake();
 		console.log("Object's scale: " + obj.scale.x);
 		if(obj.scale.x > 0){
-			obj.scale.set(-1, 1);
+			if(currentRoom == "Kitchen"){
+				obj.scale.set(-0.8, 0.8);
+			}else{
+				obj.scale.set(-1, 1);
+			}
 		}else if(obj.scale.x < 0){
-			obj.scale.set(1, 1);
+			if(currentRoom == "Kitchen"){
+				obj.scale.set(0.8, 0.8);
+			}else{
+				obj.scale.set(1, 1);
+			}
 		}
 	}
 }
@@ -361,6 +376,13 @@ function cutsceneOff(){
 }
 function CutscenePlay(){
 	console.log("NEXT CUTSCENE");
+	if(currentRoom == "MasterRoom"){
+		currentScene = GregScene;
+	}else if(currentRoom == "DaughterRoom"){
+		currentScene = SaraScene;
+	}else if(currentRoom == "SonRoom" || currentRoom == "LivingRoom"){
+		currentScene = KeithScene;
+	}
 	currentEvent = dialogue[currentScene][event];
 	if(dialogue[currentScene][event]['action'] == "tween"){
 		// remove spacebar as player cannot advance scene

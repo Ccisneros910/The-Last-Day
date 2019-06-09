@@ -8,6 +8,7 @@ var SaraScene = 0, KeithScene = 0, GregScene = 0, currentScene = 0;
 var event = 0, nextEvent = null, currentEvent = null;
 var dialogue, tweenCheck; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
+var messageBG, message;
 // player variables
 var player, controls, currentRoom, playerX, playerY, hatHeld;
 // reusables
@@ -83,6 +84,7 @@ var Load = {
 		game.load.image('daughterR', 'saraBedroom.png');
 		game.load.image('livingR', 'livingRoom.png');
 		game.load.image('kitchen', 'kitchen.png');
+		game.load.image('message', 'MessageBG.png');
 		// DIALOGUE LOADING
 		game.load.path = ('dialog/');
 		game.load.text('GregScenes', 'GregRoomScenes.json');

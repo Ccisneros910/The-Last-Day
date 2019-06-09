@@ -18,7 +18,7 @@ var Kitchen = {
 			Keith.anchor.x = 0.5;
 			Keith.anchor.y = 1;
 			Keith.animations.add('stand', ['keithWalk0'], 0, false);
-			Keith.animations.add('walk', ['keithWalk1', 'keithWalk2', 'keithWalk3', 'keithWalk4'], 3, true);
+			Keith.animations.add('walk', ['keithWalk1', 'keithWalk2', 'keithWalk3', 'keithWalk4'], 6, true);
 			Keith.animations.play('stand');
 		}
 		// CLUES

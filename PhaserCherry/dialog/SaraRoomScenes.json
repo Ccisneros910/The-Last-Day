@@ -12,7 +12,7 @@
 			"speaker" : "player", 
 			"effect" : "x",
 			"result" : "700",
-			"duration" : "2000"
+			"duration" : "1000"
 		},
 		{
 			"action" : "speak",
@@ -50,7 +50,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "800",
-			"duration" : "2800"
+			"duration" : "3000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "10",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -123,7 +132,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "600",
-			"duration" : "1000"
+			"duration" : "1000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "600",
+			"duration" : "10",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -162,7 +180,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "800",
-			"duration" : "1000"
+			"duration" : "1000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "50",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -176,6 +203,21 @@
 			"emotion" : "neutral",
 			"dialogue" : "..."
 		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "flip",
+			"result" : "800",
+			"duration" : "1000"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "1000"
+		},
+
 		{
 			"action" : "speak",
 			"speaker" : "Sara", 

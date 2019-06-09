@@ -144,7 +144,16 @@
 			"speaker" : "Greg", 
 			"effect" : "x",
 			"result" : "650",
-			"duration" : "500"
+			"duration" : "500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "50",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -186,8 +195,17 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "1050",
-			"duration" : "2500"
+			"result" : "1020",
+			"duration" : "2500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "1020",
+			"duration" : "50",
+			"animation" : "stand"
 		},
 		{
 			"action" : "tween",
@@ -200,7 +218,7 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "neutral",
-			"dialogue" : "I...I should check on the kids."
+			"dialogue" : "I should check on the kids."
 		}
 	],
 	[

@@ -22,19 +22,19 @@
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "talk",
-			"dialogue" : " I need to pick a recipe that will help wake up Bob!"
+			"dialogue" : "What recipe is good enough to wake up Bob?"
 		},
 		{
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "cry",
-			"dialogue" : "Oh Keith, ."
+			"dialogue" : "Oh Keith... That's...not how that works honey."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "angry",
-			"dialogue" : "But first! What do I cook? I should grab my cookbook."
+			"dialogue" : "I should look at my cookbook. I know Bob has some of his favorite recipes in there!"
 		},
 		{
 			"action" : "tween",
@@ -42,7 +42,17 @@
 			"speaker" : "Keith", 
 			"effect" : "x",
 			"result" : "900",
-			"duration" : "1500"
+			"duration" : "1500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "50",
+			"animation" : "stand"
 		},
 		{
 			"action" : "tween",
@@ -99,6 +109,14 @@
 			"speaker" : "player",
 			"emotion" : "neutral",
 			"dialogue" : "Here you go Keith."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "cCookBook", 
+			"effect" : "y",
+			"result" : "300",
+			"duration" : "1000"
 		},
 		{
 			"action" : "speak",

@@ -2,7 +2,7 @@ var DaughterRoom = {
 	create: function(){
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'daughterR');
-		toHallway = new Door(game, 255, 630, 'door', 1, 'Hallway', 1, 1);
+		toHallway = new Door(game, 59, 670, 'door', 1, 'Hallway', 1, 1.2);
 		// Spawn or don't spawn Sara depending on which how much of her story is done
 		clues = game.add.group();
 		clues.enableBody = true;
@@ -10,7 +10,7 @@ var DaughterRoom = {
 		cPhotoWall = clues.create(850, 320, 'PhotoWall');
 		cPhotoWall.scale.set(1.3, 1.3)
 		if(SaraScene == 0){
-			Sara = game.add.sprite(260, 650, 'fullBody&Walk');
+			Sara = game.add.sprite(61, 650, 'fullBody&Walk');
 			Sara.alpha = 0;
 		}else if(SaraScene == 1){
 			Sara = game.add.sprite(800, 650, 'fullBody&Walk');
@@ -21,7 +21,7 @@ var DaughterRoom = {
 			Sara.anchor.x = 0.5;
 			Sara.anchor.y = 1;
 			Sara.animations.add('stand', ['saraWalk0'], 0, false);
-			Sara.animations.add('walk', ['saraWalk1', 'saraWalk2', 'saraWalk3', 'saraWalk4'], 3, true);
+			Sara.animations.add('walk', ['saraWalk1', 'saraWalk2', 'saraWalk3', 'saraWalk4'], 4, true);
 			Sara.animations.play('stand');
 		}
 		// Sara's sequence is done, don't make the camera
