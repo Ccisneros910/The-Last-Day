@@ -147,7 +147,48 @@
 	],
 	[
 		{
-			
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Here you are. Let's get you to the kitchen."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "cChefsHat", 
+			"effect" : "alpha",
+			"result" : "0",
+			"duration" : "500"
+		}
+	],
+	[
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "cChefsHat", 
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "neutral",
+			"dialogue" : "Alright, now the chef can finally start his work."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "cChefsHat", 
+			"effect" : "x",
+			"result" : "600",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "Alright, now the chef can finally start his work."
 		}
 	]
 ]

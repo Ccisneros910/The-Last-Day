@@ -45,14 +45,26 @@
 			"speaker" : "Greg", 
 			"effect" : "alpha",
 			"result" : "1",
-			"duration" : "1500"
+			"duration" : "1500",
+			"animation": "stand"
 		},
 		{
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "x",
 			"result" : "550",
-			"duration" : "3000"
+			"duration" : "3000",
+			"animation": "walk",
+			"sound" : "walkSlow"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "550",
+			"duration" : "0",
+			"animation": "stand",
+			"sound" : "stop"
 		},
 		{
 			"action" : "speak",

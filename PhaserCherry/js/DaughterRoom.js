@@ -10,16 +10,19 @@ var DaughterRoom = {
 		cPhotoWall = clues.create(850, 320, 'PhotoWall');
 		cPhotoWall.scale.set(1.3, 1.3)
 		if(SaraScene == 0){
-			Sara = game.add.sprite(260, 650, 'Sara');
+			Sara = game.add.sprite(260, 650, 'fullBody&Walk');
 			Sara.alpha = 0;
 		}else if(SaraScene == 1){
-			Sara = game.add.sprite(800, 650, 'Sara');
+			Sara = game.add.sprite(800, 650, 'fullBody&Walk');
 		}else{
 			Sara = null;
 		}
 		if(Sara != null){
 			Sara.anchor.x = 0.5;
 			Sara.anchor.y = 1;
+			Sara.animations.add('stand', ['saraWalk0'], 0, false);
+			Sara.animations.add('walk', ['saraWalk1', 'saraWalk2', 'saraWalk3', 'saraWalk4'], 3, true);
+			Sara.animations.play('stand');
 		}
 		// Sara's sequence is done, don't make the camera
 		if(SaraScene <=1){

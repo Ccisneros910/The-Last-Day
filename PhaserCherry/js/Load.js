@@ -63,6 +63,7 @@ var Load = {
 		game.load.atlas('SaraEmotions', 'saraEmotions.png', 'saraEmotions.json');
 		game.load.image('Keith', 'keithOverworldSprite.png');
 		game.load.atlas('emotes', 'characterEmotions.png', 'characterEmotions.json');
+		game.load.atlas('fullBody&Walk', 'charactersWalk.png', 'charactersWalk.json');
 		//Clues
 		game.load.image('Wedding', 'clueWeddingPortrait.png');	// Greg clues
 		game.load.image('ring', 'clueRing.png');

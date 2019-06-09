@@ -2,11 +2,14 @@ var LivingRoom = {
 	create: function(){
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'livingR');
+		if(KeithScene ==1){
+			dialogue = JSON.parse(game.cache.getText('KeithScenes'));
+		}
 		// doorways
 		toHallway = new Door(game, 500, 700, 'door', 1, 'Hallway', 2.5, 2);
-		toHallway.alpha = 1;
+		toHallway.alpha = 0;
 		toKitchen = new Door(game, 1150, 705, 'door', 1, 'Kitchen', 1.5, 2.5);
-		toKitchen.alpha = 1;
+		toKitchen.alpha = 0;
 		if(currentRoom == "Hallway"){
 			playerX = 250;
 			playerY = 400;
@@ -14,8 +17,9 @@ var LivingRoom = {
 			playerX = 1000;
 			playerY = 350;
 		}
-		if(KeithScene < 2){
+		if(KeithScene < 3){
 			clues = game.add.group();
+			clues.enableBody = true;
 			cChefsHat = clues.create(180, 570, 'ChefsHat');
 			cChefsHat.anchor.x = 0.5;
 			cChefsHat.anchor.y = 0.5;
@@ -30,9 +34,18 @@ var LivingRoom = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		dBox = game.add.sprite(100, 500, 'dBox');
+		dBox.alpha = 0;
+		dText = game.add.text(320, 520, '', dialogueStyle);
 		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
 		// player.animations.play('spin');
 		// Box = game.add.sprite(200, 800, 'dialogue');
+		event = 0;
+		cutscenePlaying = false;
+		if(dialogue[KeithScene] != null){
+			nextEvent = dialogue[KeithScene][event];
+		}
+		curentScene = KeithScene;
 		game.camera.flash(0x000000, 2000);
 		currentRoom = 'LivingRoom'
 	},
@@ -77,7 +90,9 @@ var LivingRoom = {
 	 	// If no cutscene, allow the player to move freely
 	 	else if(!cutscenePlaying){
 	 		// console.log("no cutscene");
-			if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
+	 		if(game.physics.arcade.overlap(player, clues, clueFound, null, this)){
+	 			// checks if player is overlapping with any clues
+	 		}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
 	 			// to leave the room
 	 		}else if(game.physics.arcade.overlap(player, toKitchen, overDoor, null, this)){ 		
 	 			// to leave the room

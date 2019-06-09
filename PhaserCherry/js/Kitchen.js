@@ -6,27 +6,30 @@ var Kitchen = {
 		toLivingRoom.alpha = 1;
 		// KEITH INCOMING
 		if(KeithScene == 0){
-			Keith = game.add.sprite(500, 600, 'Keith');
-		}else if(KeithScene == 1){
-			Keith = game.add.sprite(900, 600, 'Keith');
-		}else if(KeithScene == 2){
-			Keith = game.add.sprite(350, 600, 'Keith');
+			Keith = game.add.sprite(500, 600, 'fullBody&Walk');
+		}else if(KeithScene == 1||KeithScene == 2){
+			Keith = game.add.sprite(900, 600, 'fullBody&Walk');
+		}else if(KeithScene >= 3){
+			Keith = game.add.sprite(350, 600, 'fullBody&Walk');
 		}
 		// Make sure he's in the room
 		if(Keith != null){
 			Keith.scale.set(0.8, 0.8)
 			Keith.anchor.x = 0.5;
 			Keith.anchor.y = 1;
+			Keith.animations.add('stand', ['keithWalk0'], 0, false);
+			Keith.animations.add('walk', ['keithWalk1', 'keithWalk2', 'keithWalk3', 'keithWalk4'], 3, true);
+			Keith.animations.play('stand');
 		}
 		// CLUES
 		clues = game.add.group();
 		clues.enableBody = true;
 		// individual clue assets
-		if(KeithScene >= 1){
-			if(keithScene == 1){
+		if(KeithScene >= 2){
+			if(KeithScene == 2){
 				cChefsHat = clues.create(450, 450, 'ChefsHat');
 				cChefsHat.alpha = 0;
-			}else if(KeithScene == 2){
+			}else if(KeithScene >= 3){
 				cChefsHat = clues.create(600, 450, 'ChefsHat');
 			}
 			cChefsHat.scale.set(1.5, 1.5);
@@ -75,9 +78,14 @@ var Kitchen = {
 
 		currentScene = KeithScene;
 		cutscenePlaying = false;
+		if(dialogue[KeithScene] != null){
+			nextEvent = dialogue[KeithScene][event];
+		}
+		console.log("KeithScene: " + KeithScene);
 		if(KeithScene == 0){
 			game.camera.onFlashComplete.addOnce(cutsceneOn);
-		}else if(KeithScene == 1 && hatHeld == true){
+		}else if(KeithScene == 3 && hatHeld == true){
+			hatHeld = false;
 			game.camera.onFlashComplete.addOnce(cutsceneOn);
 		}
 		game.camera.flash(0x000000, 2000);
@@ -92,6 +100,10 @@ var Kitchen = {
 				if(nextEvent != null){
 	 				CutscenePlay();
 				}
+				// else{
+				// 	cutscenePlaying = false;
+				// 	console.log("no cutscenes left");
+				// }
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
 	 				// console.log("tween running");

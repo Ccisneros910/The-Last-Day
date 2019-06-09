@@ -15,20 +15,42 @@ var MasterRoom = {
 			cWeddingPhoto.scale.set(0.3, 0.3);
 			// game.physics.arcade.enable(clue);
 			cRing = clues.create(560, 430, 'ring');
+			if(GregScene == 0){
+				cRing.alpha = 0;
+			}
 			// game.physics.arcade.enable(clue);
 		// }
 		//make the husbando
-		Greg = game.add.sprite(1050, 500, 'Greg');
-		GregMake();
+		Greg = null;
+		if(GregScene == 0 || SaraScene == 3 && KeithScene == 4){
+			game.camera.onFlashComplete.addOnce(cutsceneOn);
+			if(GregScene == 0){
+				Greg = game.add.sprite(1050, 500, 'fullBody&Walk');
+				Greg.alpha = 0;
+			}else if(SaraScene == 3 && KeithScene == 4){
+				Greg = game.add.sprite(350, 500, 'fullBody&Walk');
+			}
+			if(Greg != null){
+				Greg.anchor.x = 0.5;
+				Greg.anchor.y = 0.5;
+				Greg.animations.add('stand', ['gregWalk0'], 0, false);
+				Greg.animations.add('walk', ['gregWalk1', 'gregWalk2', 'gregWalk3', 'gregWalk4'], 3, true);
+				Greg.animations.play('stand');
+			}
+		}
 		if(currentRoom == null){
 			playerX = 200;
 			playerY = 400;
-		}else if(currentRoom == Hallway){
+		}else if(currentRoom == "Hallway"){
 			playerX = 800;
 			playerY = 400;
 		}
 		player = new Player(game, playerX, playerY, 'ghost');
-		player.alpha = 0;
+		if(GregScene == 0){
+			player.alpha = 0;
+
+		}
+		// player.alpha = 0;
 		console.log(player);
 		console.log("Ghost x: " + player.x);
 		// the spacebar will follow the player around
@@ -71,9 +93,6 @@ var MasterRoom = {
 		player.time = 0;
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
-		if(GregScene == 0){
-			game.camera.onFlashComplete.addOnce(cutsceneOn);
-		}
 		if(GregScene == 0 && SaraScene == 0 && KeithScene == 0){
 			game.camera.flash(0x000000, 3000);
 		}else{
@@ -156,28 +175,47 @@ function clueFound(p, g){
 	    	stopSpacebar();
 		    if(g.key == 'Wedding'){
 		    	dText.text = "Till death do us part...Little did I know death would come so soon.";
+		    	GhostEmotes.animations.play("neutral");
 			}else if(g.key =='ring'){
 		    	dText.text = "You wore this to show your faith to me, but now you are...";
+		    	GhostEmotes.animations.play("cry");
 			}else if(g.key =='Camera'){
 				if(SaraScene ==2 && currentRoom == "DaughterRoom"){
 					console.log("Starting scene 3");
 					cutscenePlaying  = true;
 				}else{
-		    	dText.text = "I want you to see much more of the world with this.";
+		    		GhostEmotes.animations.play("neutral")
+		    		dText.text = "I want you to see much more of the world with this.";
 		    	}
 			}else if(g.key =='PhotoWall'){
 				if(SaraScene ==1 && currentRoom == "DaughterRoom"){
 					console.log("Starting scene 2");
 					cutscenePlaying  = true;
 				}else{
+		    		GhostEmotes.animations.play("cry");
 		    		dText.text = "You may not see the beauty in yourself, but you see it in everything else.";
 				}
 			}else if(g.key =='ChefsHat'){
-		    	dText.text = "Every stain is a reminder of every meal you have made.";
+				if(KeithScene == 2 && currentRoom == "LivingRoom"){
+					cutsceneOn();
+					hatHeld = true;
+				}else{
+		    		GhostEmotes.animations.play("surprise");
+		    		dText.text = "If our little Chef's hat is here, he must not be too far.";
+				}
+				// else if(KeithScene == 3){
+		  //   		dText.text = "Every stain is a reminder of every meal you have made.";
+				// }
 			}else if(g.key =='CookBook'){
-		    	dText.text = "It's taken some work, but you have come up with some good things.";
+				if(KeithScene == 1){
+					cutsceneOn();
+				}else{
+					GhostEmotes.animations.play("neutral");
+		    		dText.text = "It's taken some work, but you have come up with some good things.";
+				}
 			}
 			if(cutscenePlaying == false){
+				GhostEmotes.alpha = 1;
 	    		dBox.alpha = 1;
 	    	}
 
@@ -190,6 +228,7 @@ function clueFound(p, g){
 			playSpacebar(p);
 			resetDBox();
 			unpausePlayer(p);
+			GhostEmotes.alpha = 0;
 			// p.speed = 400;
 			player.time = 0;
 		}
@@ -302,7 +341,7 @@ function advanceCutscene(){
 		GregScene++;
 	}else if(currentRoom == "DaughterRoom"){
 		SaraScene++;
-	}else if(currentRoom == "Kitchen"){
+	}else if(currentRoom == "Kitchen" || currentRoom == "LivingRoom"){
 		KeithScene++;
 	}
 	currentScene++;
@@ -330,11 +369,14 @@ function CutscenePlay(){
 		dBox.alpha = 0;
 		GregEmotes.alpha = 0;
 		GhostEmotes.alpha = 0;
-		if(dialogue[currentScene][event]['effect'] == "alpha"){
 			// CAN typecast the results and duration, BUT NOT the property or easing
+		if(dialogue[currentScene][event]['effect'] == "alpha"){
 			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({alpha : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), Phaser.Easing.Linear.None, true);
 		}else if(dialogue[currentScene][event]['effect'] == "x"){
 			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({x : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), this[dialogue[currentScene][event]['easing']], true);
+			if(dialogue[currentScene][event]['animation'] != null){
+				this[dialogue[currentScene][event]['speaker']].animations.play(dialogue[currentScene][event]['animation']);
+			}
 		}else if(dialogue[currentScene][event]['effect'] == "y"){
 			console.log("EASING EFFECT: " + dialogue[currentScene][event]['easing']);
 			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({y : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), this[dialogue[currentScene][event]['easing']], true);
