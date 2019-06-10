@@ -28,7 +28,7 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "cry",
-			"dialogue" : "Oh Keith, ."
+			"dialogue" : "Oh Keith..."
 		},
 		{
 			"action" : "speak",
