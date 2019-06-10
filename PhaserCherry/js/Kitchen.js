@@ -39,7 +39,11 @@ var Kitchen = {
 			cChefsHat.anchor.x = 0.5;
 			cChefsHat.anchor.y = 1;
 		}
-		cCookBook = clues.create(1050, 450, 'CookBook');
+		if(KeithScene < 2){
+			cCookBook = clues.create(1200, 650, 'CookBook');
+		}else{
+			cCookBook = clues.create(1200, 475, 'CookBook');
+		}
 		cCookBook.scale.set(1.5, 1.5);
 		cCookBook.anchor.x = 0.5;
 		cCookBook.anchor.y = 1;
@@ -55,6 +59,13 @@ var Kitchen = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		// DIALOG BOX
 		console.log("making dialog box");
 		dBox = game.add.sprite(100, 500, 'dBox');
@@ -144,6 +155,7 @@ var Kitchen = {
 	 						ScenesLeft--;
 	 						playMessage();
 	 					}else{
+	 						playArrowKeys();
 	 						player.speed = 400;
 	 					}
 	 				}
@@ -163,6 +175,7 @@ var Kitchen = {
 	 						ScenesLeft--;
 	 						playMessage();
 	 					}else{
+	 						playArrowKeys();
 	 						player.speed = 400;
 	 					}
 					}
@@ -180,6 +193,10 @@ var Kitchen = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 			stopArrowKeys();
+	 		}
+
 	 	}
 	}
 // 	render: function(){

@@ -63,7 +63,7 @@ var MasterRoom = {
 		spacebarP.alpha = 0;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
-		arrowKeys = player.addChild(game.add.sprite(15, -130, 'arrowKeys'));
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
 		arrowKeys.scale.set(1, 1);
 		arrowKeys.animations.add('dance');
 		arrowKeys.alpha = 0;

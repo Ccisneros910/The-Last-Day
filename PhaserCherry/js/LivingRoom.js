@@ -34,6 +34,13 @@ var LivingRoom = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
 		dText = game.add.text(320, 520, '', dialogueStyle);
@@ -77,6 +84,7 @@ var LivingRoom = {
 	 					console.log("tween ended \n END OF SCENE");
 	 					cutsceneOff();
 	 					advanceCutscene();
+	 					playArrowKeys();
 	 					player.speed = 400;
 	 				}
 	 			}else if(currentEvent.action == "speak"){
@@ -91,6 +99,7 @@ var LivingRoom = {
 						resetDBox();
 	 					cutsceneOff();
 	 					advanceCutscene();
+	 					playArrowKeys();
 	 					player.speed = 400;
 					}
 	 			}
@@ -109,6 +118,10 @@ var LivingRoom = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 			stopArrowKeys();
+	 		}
+
 	 	}
 	}
 };

@@ -21,7 +21,7 @@ var MainMenu = {
 		this.line3.alpha = 0;
 		//credits text
 		this.creditsTitle  = game.add.text(game.world.centerX, 100, 'A We Dem Boyz Production', titleStyle);
-		this.credits = game.add.text(game.world.centerX, 200, 'Team Members:\nCarlos Cisneros\nSally Nguy\nKatheriya Prowsri\n\nContributing Artist:\n', creditStyle);
+		this.credits = game.add.text(game.world.centerX, 200, 'Team Members:\nCarlos Cisneros - Sally Nguy - Katheriya Prowsri\n\nContributing Artist:\nbdvictor - https://freesound.org/people/bdvictor/sounds/240914/ \nnewagesoup - https://freesound.org/people/newagesoup/sounds/339343/', creditStyle);
 		this.creditsExit = game.add.text(game.world.centerX, 600, 'Back', optionStyle);
 		// hide the credits
 		this.creditsTitle.alpha = 0;

@@ -327,15 +327,15 @@
 			"action" : "tween",
 			"speaker" : "Sara", 
 			"effect" : "x",
-			"result" : "250",
-			"duration" : "2500",
+			"result" : "90",
+			"duration" : "2750",
 			"animation" : "walk"
 		},
 		{
 			"action" : "tween",
 			"speaker" : "Sara", 
 			"effect" : "x",
-			"result" : "250",
+			"result" : "90",
 			"duration" : "1",
 			"animation" : "stand"
 		},

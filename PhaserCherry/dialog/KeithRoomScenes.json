@@ -40,9 +40,25 @@
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
 			"effect" : "x",
 			"result" : "900",
-			"duration" : "1500"
+			"duration" : "1500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "900",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "tween",
@@ -90,7 +106,13 @@
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "neutral",
-			"dialogue" : "Hmmmm. I could've sworn my cookbook was in here."
+			"dialogue" : "Hmmmm. I could've sworn my *cookbook* was in here."
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
 		}
 	],
 	[
@@ -101,10 +123,18 @@
 			"dialogue" : "Here you go Keith."
 		},
 		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "cCookBook", 
+			"effect" : "7",
+			"result" : "475",
+			"duration" : "1000"
+		},
+		{
 			"action" : "speak",
 			"speaker" : "Keith",
-			"emotion" : "neutral",
-			"dialogue" : "!!!"
+			"emotion" : "confused",
+			"dialogue" : "???"
 		},
 		{
 			"action" : "tween",
@@ -116,8 +146,8 @@
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "x",
-			"result" : "900",
+			"effect" : "y",
+			"result" : "700",
 			"duration" : "1000"
 		},
 		{
@@ -142,7 +172,7 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "surprise",
-			"dialogue" : "Didn't I see that on the way here?"
+			"dialogue" : "Didn't I see that *on the way* here?"
 		}
 	],
 	[

@@ -32,7 +32,7 @@ var DaughterRoom = {
 		}
 		// Sara's sequence is done, don't make the camera
 		if(SaraScene <=2){
-			cCamera = clues.create(420, 450, 'Camera');
+			cCamera = clues.create(420, 467, 'Camera');
 			cCamera.anchor.x = 0.5;
 			cCamera.anchor.y = 0.5;
 		}
@@ -52,6 +52,13 @@ var DaughterRoom = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		// DIALOG BOX
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
@@ -95,7 +102,7 @@ var DaughterRoom = {
 		message = game.add.text(game.world.centerX, game.world.centerY, '', messageStyle);
 		message.anchor.x = 0.5
 		message.alpha = 0;
-		console.log("prepping message sequence")
+		console.log("prepping message sequence");
 		t01 = game.add.tween(messageBG).to({alpha : 1}, 1000, Phaser.Easing.Linear.None, false);
 		t02 = game.add.tween(message).to({alpha : 1}, 1500, Phaser.Easing.Linear.None);
 		t03 = game.add.tween(message).to({alpha : 1}, 3000, Phaser.Easing.Linear.None);
@@ -138,6 +145,7 @@ var DaughterRoom = {
 	 						ScenesLeft--;
 	 						playMessage();
 	 					}else{
+	 						playArrowKeys();
 	 						player.speed = 400;
 	 					}
 	 				}
@@ -151,10 +159,9 @@ var DaughterRoom = {
 					}else if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.time >35 && nextEvent == null){
 	 					console.log("dialog ended \n END OF SCENE");
 						resetDBox();
-	 					console.log("cutscenePlaying" + cutscenePlaying);
 	 					cutsceneOff();
-	 					console.log("cutscenePlaying" + cutscenePlaying);
 	 					advanceCutscene();
+	 					playArrowKeys();
 	 					player.speed = 400;
 					}
 	 			}
@@ -172,7 +179,7 @@ var DaughterRoom = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
-	 		if(player.velocity.x > 0 || player.velocity.y > 0){
+	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
 	 			stopArrowKeys();
 	 		}
 

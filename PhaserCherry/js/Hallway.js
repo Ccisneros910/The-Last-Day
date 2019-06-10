@@ -21,6 +21,8 @@ var Hallway = {
 		clues = game.add.group();
 		clues.enableBody = true;
 		cKeithDoor = game.add.sprite(825, 550, 'door');
+		cKeithDoor.anchor.x = 0.5;
+		cKeithDoor.anchor.y = 1;
 		if(currentRoom == "MasterRoom"){
 			playerX = 150;
 			playerY = 400;
@@ -46,6 +48,13 @@ var Hallway = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		// add dialog box
 		dialogueBox = game.add.sprite(100, 500, 'dBox');
 		dialogueBox.alpha = 0;
@@ -82,6 +91,10 @@ var Hallway = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 			stopArrowKeys();
+	 		}
+
 	 	}
 	}
 };
