@@ -280,6 +280,11 @@
 			"speaker" : "player", 
 			"emotion" : "neutral",
 			"dialogue" : "I...I should check on the kids."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "none", 
+			"dialogue" : "Look for Sara and Keith. Interact with ceratin objects to respond to what they say and further the story."
 		}
 	],
 	[
@@ -336,7 +341,7 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "neutral",
-			"dialogue" : "Greg, I know it's hard. I don't want to give you up either. But you have to *let me go*."
+			"dialogue" : "Greg, I know it's hard. I don't want to give you up either. But you have to let me go. We are no longer *married*."
 		}
 	],
 	[
@@ -344,7 +349,7 @@
 			"action" : "tween",
 			"speaker" : "cRing", 
 			"effect" : "x",
-			"result" : "450",
+			"result" : "580",
 			"duration" : "750"
 		},
 		{
@@ -357,7 +362,7 @@
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "x",
-			"result" : "650",
+			"result" : "710",
 			"duration" : "500"
 		},
 		{
@@ -370,7 +375,7 @@
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "x",
-			"result" : "750",
+			"result" : "760",
 			"duration" : "500"
 		},
 		{
@@ -436,13 +441,13 @@
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
-			"emotion" : "cry",
+			"emotion" : "distraught",
 			"dialogue" : "To have had you..."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
-			"emotion" : "neutral",
+			"emotion" : "cry",
 			"dialogue" : "Bob...what now?"
 		},
 		{
@@ -463,8 +468,9 @@
 			"action" : "tween",
 			"speaker" : "cRing", 
 			"effect" : "x",
-			"result" : "450",
-			"duration" : "750"
+			"result" : "560",
+			"duration" : "750",
+			"animation" : "close"
 		},
 		{
 			"action" : "speak",

@@ -4,7 +4,7 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "neutral",
-			"dialogue" : "What happened to the room? Her room is never this messy."
+			"dialogue" : "Oh Sara, I can't believe you left your camera here."
 		},
 		{
 			"action" : "tween",
@@ -12,13 +12,13 @@
 			"speaker" : "player", 
 			"effect" : "x",
 			"result" : "700",
-			"duration" : "2000"
+			"duration" : "2300"
 		},
 		{
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "neutral",
-			"dialogue" : "Sara... Did I... Did I do this to you?"
+			"dialogue" : "You're like this because of me, aren't you?"
 		},
 		{
 			"action" : "tween",
@@ -50,7 +50,7 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "800",
-			"duration" : "2800",
+			"duration" : "3300",
 			"animation" : "walk"
 		},
 		{
@@ -290,7 +290,7 @@
 			"action" : "speak",
 			"speaker" : "Sara",
 			"emotion" : "neutral",
-			"dialogue" : "I got this a year ago. And we've been together ever since."
+			"dialogue" : "I got this a year ago. And I've had this by my side ever since."
 		},
 		{
 			"action" : "speak",
@@ -327,8 +327,8 @@
 			"action" : "tween",
 			"speaker" : "Sara", 
 			"effect" : "x",
-			"result" : "90",
-			"duration" : "2750",
+			"result" : "110",
+			"duration" : "3200",
 			"animation" : "walk"
 		},
 		{

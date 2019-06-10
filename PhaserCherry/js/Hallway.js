@@ -91,7 +91,7 @@ var Hallway = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
-	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
 	 			stopArrowKeys();
 	 		}
 

@@ -31,7 +31,7 @@ var MasterRoom = {
 				Greg.alpha = 0;
 			}else if(SaraScene == 3 && KeithScene == 4){
 				game.camera.onFlashComplete.addOnce(cutsceneOn);
-				Greg = game.add.sprite(350, 500, 'fullBody&Walk');
+				Greg = game.add.sprite(680, 500, 'fullBody&Walk');
 			}
 			if(Greg != null){
 				Greg.anchor.x = 0.5;
@@ -51,7 +51,8 @@ var MasterRoom = {
 		player = new Player(game, playerX, playerY, 'ghost');
 		if(GregScene == 0){
 			player.alpha = 0;
-
+		}else{
+			player.alpha = 0.8;
 		}
 		// player.alpha = 0;
 		console.log(player);
@@ -205,7 +206,7 @@ var MasterRoom = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
-	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
 	 			stopArrowKeys();
 	 		}
 	 	}
@@ -226,6 +227,7 @@ function checkOverlap(c, p){
 function clueFound(p, g){
 	playSpacebar(p);	//first indicate to the player they can do something
 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && p.time > 50){
+		player.speed = 0;
 		console.log('spacebar pressed');
 		// make sure there is currently no dialogue
 	    if(dText.text == '' && dialoguePlaying == false){
@@ -270,7 +272,7 @@ function clueFound(p, g){
 				}else if(KeithScene == 1 && currentRoom == "LivingRoom"){
 		    		GhostEmotes.animations.play("bittersweet");
 		    		dText.text = "Something tells me he might need this soon.";
-				}else if(KeithScene == 3 && currentRoom == "Kitchen"){
+				}else if(KeithScene == 4 && currentRoom == "Kitchen"){
 		    		GhostEmotes.animations.play("bittersweet");
 		    		dText.text = "Don't you ever stop cooking Keith.";
 				}
@@ -426,14 +428,15 @@ function GregMake(){
 function playMessage(){
 	console.log("playing first tween");
 	// assign the corresponding message
+	message.alpha = 0;
 	if(ScenesLeft == 3){
-		message.text = "Three more goodbyes to say."
+		message.text = "Three people need to hear you say goodbye."
 	}else if(ScenesLeft == 2){
-		message.text = "Two more to go."
+		message.text = "Two more goodbyes to go."
 	}else if(ScenesLeft == 1){
-		message.text = "Only one left."
+		message.text = "Only one more farewell."
 	}else if(ScenesLeft == 0){
-		message.text = "No more goodbyes to say. The time has come to move on. But don't worry. It is hard for them now, but you have helped them move on."
+		message.text = "You have said your goodbyes. The time has come to move on.\nBut don't worry. \nIt is hard for them now, but you have helped them move on."
 	}
 	// chain the first four tweens together
 	t01.chain(t02);
@@ -514,7 +517,15 @@ function CutscenePlay(){
 		playSpacebar(player);
 		dBox.alpha = 1;
 		GhostEmotes.alpha = 0;
-		GregEmotes.alpha = 0;
+		if(GregEmotes != null){
+			GregEmotes.alpha = 0;
+		}
+		if(KeithEmotes != null){
+			KeithEmotes.alpha = 0;
+		}
+		if(SaraEmotes != null){
+			SaraEmotes.alpha = 0;
+		}
 		if(dialogue[currentScene][event]['speaker'] == "player"){
 			GhostEmotes.alpha = 1;
 			GhostEmotes.animations.play(dialogue[currentScene][event]['emotion']);

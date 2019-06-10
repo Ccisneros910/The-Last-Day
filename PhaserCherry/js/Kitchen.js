@@ -29,10 +29,10 @@ var Kitchen = {
 		clues.enableBody = true;
 		// individual clue assets
 		if(KeithScene >= 2){
-			if(KeithScene == 2){
+			if(KeithScene == 3){
 				cChefsHat = clues.create(450, 450, 'ChefsHat');
 				cChefsHat.alpha = 0;
-			}else if(KeithScene >= 3){
+			}else if(KeithScene >= 4){
 				cChefsHat = clues.create(600, 450, 'ChefsHat');
 			}
 			cChefsHat.scale.set(1.5, 1.5);
@@ -193,7 +193,7 @@ var Kitchen = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
-	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
 	 			stopArrowKeys();
 	 		}
 

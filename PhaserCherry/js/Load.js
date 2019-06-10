@@ -39,7 +39,7 @@ var creditStyle = {
 // Dialogue text style
 var dialogueStyle = {
 	font: 'Libre Baskerville',
-	fontSize: 35,
+	fontSize: 32,
 	fill: '#000000',
 	align: 'left',
 	wordWrap: true,
@@ -51,7 +51,7 @@ var messageStyle = {
 	fill: '#ffffff',
 	align: 'center',
 	wordWrap: true,
-	wordWrapWidth: 500
+	wordWrapWidth: 700
 };
 
 var Load = {
@@ -59,7 +59,7 @@ var Load = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		console.log('MainMenu: preload');
 		game.load.path = ('assets/img/');
-		game.load.image('homeScreen', 'Rooms/titleScreen.png');
+		game.load.image('homeScreen', 'Rooms/titlescreen.png');
 		// game.load.image('dialogue', 'dialogueBox.jpg');
 		//Characters
 		// game.load.image('ghost', 'ghostSmall.png');

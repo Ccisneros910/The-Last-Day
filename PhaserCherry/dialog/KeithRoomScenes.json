@@ -126,7 +126,7 @@
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "cCookBook", 
-			"effect" : "7",
+			"effect" : "y",
 			"result" : "475",
 			"duration" : "1000"
 		},
@@ -140,15 +140,27 @@
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "flip"
+			"effect" : "y",
+			"result" : "700",
+			"duration" : "1000",
+			"animation" : "walk"
 		},
 		{
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "y",
-			"result" : "700",
-			"duration" : "1000"
+			"effect" : "x",
+			"result" : "1000",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "1000",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -217,8 +229,44 @@
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
+			"emotion" : "confused",
+			"dialogue" : "What???"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "There is my hat!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Now I can start cooking. Hmmm, but that's funny. Bob usually helps me find everything I need."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "confused",
+			"dialogue" : "Everything appeared after I started looking for it. It's kinda like Bob was helping me today."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
 			"emotion" : "neutral",
-			"dialogue" : "Alright, now the chef can finally start his work."
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Thanks dad! For all your help!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "bittersweet",
+			"dialogue" : "Oh Keith, you'll do great. I don't think you need my help anymore."
 		}
 	]
 ]

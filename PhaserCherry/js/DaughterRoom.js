@@ -172,14 +172,14 @@ var DaughterRoom = {
 
 			}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
 	 			// to leave the room
-	 		}else if(SaraScene == 0 && player.x >= 450){
+	 		}else if(SaraScene == 0 && player.x >= 300){
 	 			// will  not 
 	 			cutscenePlaying = true;
 	 		}else{
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
-	 		if(player.body.velocity.x > 0 || player.body.velocity.y > 0){
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
 	 			stopArrowKeys();
 	 		}
 
