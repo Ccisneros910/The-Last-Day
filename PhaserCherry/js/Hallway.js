@@ -10,14 +10,19 @@ var Hallway = {
 		toMaster.frame = 1;
 		toMaster.alpha= 0;
 		toSara = new Door(game, 450, 550, 'door', 1, 'DaughterRoom', 1, 1);
-		toSara.frame = 2;
-		toKeith = new Door(game, 825, 550, 'door', 1, 'SonRoom', 1, 1);
-		toKeith.frame = 0;
+		toSara.frame = 1;
+		// toKeith = new Door(game, 825, 550, 'door', 1, 'SonRoom', 1, 1);
+		// toKeith.frame = 0;
 		toLivingRoom = new Door(game, 970, 720, 'door', 1, 'LivingRoom', 4.5, 0.5);
 		toLivingRoom.frame = 1;
 		toLivingRoom.alpha = 0;
 		// toLivingRoom.alpha = 0;
 		// player must be drawn last to be above everything
+		clues = game.add.group();
+		clues.enableBody = true;
+		cKeithDoor = game.add.sprite(825, 550, 'door');
+		cKeithDoor.anchor.x = 0.5;
+		cKeithDoor.anchor.y = 1;
 		if(currentRoom == "MasterRoom"){
 			playerX = 150;
 			playerY = 400;
@@ -33,6 +38,7 @@ var Hallway = {
 		}
 		console.log("playerX: " + playerX);
 		console.log("playerY: " + playerY);
+		//set up player
 		player = new Player(game, playerX, playerY, 'ghost');
 		player.alpha = 0.9;
 		// the spacebar will follow the player around
@@ -42,8 +48,18 @@ var Hallway = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
+		// add dialog box
 		dialogueBox = game.add.sprite(100, 500, 'dBox');
 		dialogueBox.alpha = 0;
+		dText = game.add.text(320, 520, '', dialogueStyle);
+		// starting scene
 		game.camera.flash(0x000000, 2000);
 		cutscenePlaying = false;
 		currentRoom = 'Hallway';
@@ -66,7 +82,7 @@ var Hallway = {
 
 			}else if(game.physics.arcade.overlap(player, toSara, overDoor, null, this)){ 		
 	 			// to leave the room
-	 		}else if(game.physics.arcade.overlap(player, toKeith, overDoor, null, this)){ 		
+	 		// }else if(game.physics.arcade.overlap(player, toKeith, overDoor, null, this)){ 		
 	 			// to leave the room
 	 		}else if(game.physics.arcade.overlap(player, toLivingRoom, overDoor, null, this)){ 		
 	 			// to leave the room
@@ -75,6 +91,10 @@ var Hallway = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
+	 			stopArrowKeys();
+	 		}
+
 	 	}
 	}
 };

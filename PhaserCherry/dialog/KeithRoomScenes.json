@@ -28,13 +28,19 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "cry",
-			"dialogue" : "Oh Keith... That's...not how that works honey."
+			"dialogue" : "Oh Keith..."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "angry",
 			"dialogue" : "I should look at my cookbook. I know Bob has some of his favorite recipes in there!"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "flip"
 		},
 		{
 			"action" : "tween",
@@ -51,7 +57,7 @@
 			"speaker" : "Keith", 
 			"effect" : "x",
 			"result" : "900",
-			"duration" : "50",
+			"duration" : "1",
 			"animation" : "stand"
 		},
 		{
@@ -100,21 +106,13 @@
 			"action" : "speak",
 			"speaker" : "Keith",
 			"emotion" : "neutral",
-			"dialogue" : "Hmmmm. I could've sworn my cookbook was in here."
+			"dialogue" : "Hmmmm. I could've sworn my *cookbook* was in here."
 		},
 		{
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "flip",
-		},
-		{
-			"action" : "tween",
-			"number" : "1",
-			"speaker" : "Keith", 
-			"effect" : "x",
-			"result" : "550",
-			"duration" : "1000"
+			"effect" : "flip"
 		}
 	],
 	[
@@ -129,28 +127,22 @@
 			"number" : "1",
 			"speaker" : "cCookBook", 
 			"effect" : "y",
-			"result" : "300",
+			"result" : "475",
 			"duration" : "1000"
-		},
-		{
-			"action" : "tween",
-			"number" : "1",
-			"speaker" : "Keith", 
-			"effect" : "flip"
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
-			"emotion" : "neutral",
-			"dialogue" : "!!!"
+			"emotion" : "confused",
+			"dialogue" : "???"
 		},
 		{
 			"action" : "tween",
 			"number" : "1",
 			"speaker" : "Keith", 
-			"effect" : "x",
-			"result" : "900",
-			"duration" : "1500",
+			"effect" : "y",
+			"result" : "700",
+			"duration" : "1000",
 			"animation" : "walk"
 		},
 		{
@@ -158,8 +150,16 @@
 			"number" : "1",
 			"speaker" : "Keith", 
 			"effect" : "x",
-			"result" : "900",
-			"duration" : "10",
+			"result" : "1000",
+			"duration" : "500"
+		},
+		{
+			"action" : "tween",
+			"number" : "1",
+			"speaker" : "Keith", 
+			"effect" : "x",
+			"result" : "1000",
+			"duration" : "1",
 			"animation" : "stand"
 		},
 		{
@@ -184,7 +184,7 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "surprise",
-			"dialogue" : "Didn't I see that on the way here?"
+			"dialogue" : "Didn't I see that *on the way* here?"
 		}
 	],
 	[
@@ -235,6 +235,44 @@
 		{
 			"action" : "speak",
 			"speaker" : "Keith",
+			"emotion" : "confused",
+			"dialogue" : "What???"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "There is my hat!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Now I can start cooking. Hmmm, but that's funny. Bob usually helps me find everything I need."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "confused",
+			"dialogue" : "Everything appeared after I started looking for it. It's kinda like Bob was helping me today."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Keith",
+			"emotion" : "talk",
+			"dialogue" : "Thanks dad! For all your help!"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "player",
+			"emotion" : "bittersweet",
+			"dialogue" : "Oh Keith, you'll do great. I don't think you need my help anymore.",
 			"emotion" : "neutral",
 			"dialogue" : "There's my hat!"
 		},

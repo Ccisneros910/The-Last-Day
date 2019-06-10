@@ -34,12 +34,28 @@ var LivingRoom = {
 		spacebarP.alpha = 0.8;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
 		dText = game.add.text(320, 520, '', dialogueStyle);
-		// player.animations.add('spin', [0, 1, 2, 3], 16, true);
-		// player.animations.play('spin');
-		// Box = game.add.sprite(200, 800, 'dialogue');
+
+		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'emotes'));
+		GhostEmotes.scale.set(1, 1);
+		GhostEmotes.anchor.x = 0.5;
+		GhostEmotes.anchor.y = 0.5;
+		GhostEmotes.animations.add('neutral', ['player0'], 0, false);
+		GhostEmotes.animations.add('cry', ['player1', 'player2'], 3, true);
+		GhostEmotes.animations.add('surprise', ['player3', 'player4'], 3, true);
+		GhostEmotes.animations.add('bittersweet', ['player5', 'player6'], 3, true);
+		GhostEmotes.alpha = 0;
+
+		// PREPARE CUTSCENES
 		event = 0;
 		cutscenePlaying = false;
 		if(dialogue[KeithScene] != null){
@@ -68,6 +84,7 @@ var LivingRoom = {
 	 					console.log("tween ended \n END OF SCENE");
 	 					cutsceneOff();
 	 					advanceCutscene();
+	 					playArrowKeys();
 	 					player.speed = 400;
 	 				}
 	 			}else if(currentEvent.action == "speak"){
@@ -82,6 +99,7 @@ var LivingRoom = {
 						resetDBox();
 	 					cutsceneOff();
 	 					advanceCutscene();
+	 					playArrowKeys();
 	 					player.speed = 400;
 					}
 	 			}
@@ -100,6 +118,10 @@ var LivingRoom = {
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
+	 			stopArrowKeys();
+	 		}
+
 	 	}
 	}
 };

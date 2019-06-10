@@ -62,7 +62,7 @@
 			"speaker" : "Greg", 
 			"effect" : "x",
 			"result" : "550",
-			"duration" : "0",
+			"duration" : "1",
 			"animation": "stand",
 			"sound" : "stop"
 		},
@@ -152,8 +152,8 @@
 			"speaker" : "Greg", 
 			"effect" : "x",
 			"result" : "650",
-			"duration" : "50",
-			"animation" : "stand"
+			"duration" : "10",
+			"animation": "stand"
 		},
 		{
 			"action" : "speak",
@@ -195,15 +195,15 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "850",
-			"duration" : "2500",
-			"animation" : "walk"
+			"result" : "750",
+			"duration" : "1000",
+			"animation": "walk"
 		},
 		{
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "850",
+			"result" : "750",
 			"duration" : "10",
 			"animation" : "stand"
 		},
@@ -222,16 +222,16 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "650",
-			"duration" : "2500",
+			"result" : "675",
+			"duration" : "1500",
 			"animation" : "walk"
 		},
 		{
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "650",
-			"duration" : "10",
+			"result" : "675",
+			"duration" : "1",
 			"animation" : "stand"
 		},
 		{
@@ -257,7 +257,7 @@
 			"speaker" : "Greg",
 			"effect" : "x",
 			"result" : "1020",
-			"duration" : "2000",
+			"duration" : "2500",
 			"animation" : "walk"
 		},
 		{
@@ -265,7 +265,7 @@
 			"speaker" : "Greg",
 			"effect" : "x",
 			"result" : "1020",
-			"duration" : "10",
+			"duration" : "1",
 			"animation" : "stand"
 		},
 		{
@@ -279,7 +279,12 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "neutral",
-			"dialogue" : "I should check on the kids."
+			"dialogue" : "I...I should check on the kids."
+		},
+		{
+			"action" : "speak",
+			"speaker" : "none", 
+			"dialogue" : "Look for Sara and Keith. Interact with ceratin objects to respond to what they say and further the story."
 		}
 	],
 	[
@@ -351,7 +356,7 @@
 			"action" : "speak",
 			"speaker" : "player", 
 			"emotion" : "neutral",
-			"dialogue" : "Greg, I know it's hard. I don't want to give you up either. But you have to *let me go*."
+			"dialogue" : "Greg, I know it's hard. I don't want to give you up either. But you have to let me go. We are no longer *married*."
 		}
 	],
 	[
@@ -359,7 +364,7 @@
 			"action" : "tween",
 			"speaker" : "cRing", 
 			"effect" : "x",
-			"result" : "450",
+			"result" : "580",
 			"duration" : "750"
 		},
 		{
@@ -372,7 +377,7 @@
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "x",
-			"result" : "650",
+			"result" : "710",
 			"duration" : "500"
 		},
 		{
@@ -385,7 +390,7 @@
 			"action" : "tween",
 			"speaker" : "Greg", 
 			"effect" : "x",
-			"result" : "750",
+			"result" : "760",
 			"duration" : "500"
 		},
 		{
@@ -451,13 +456,13 @@
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
-			"emotion" : "cry",
+			"emotion" : "distraught",
 			"dialogue" : "To have had you..."
 		},
 		{
 			"action" : "speak",
 			"speaker" : "Greg", 
-			"emotion" : "neutral",
+			"emotion" : "cry",
 			"dialogue" : "Bob...what now?"
 		},
 		{
@@ -478,15 +483,9 @@
 			"action" : "tween",
 			"speaker" : "cRing", 
 			"effect" : "x",
-			"result" : "450",
+			"result" : "560",
 			"duration" : "750",
 			"animation" : "close"
-		},
-		{
-			"action" : "speak",
-			"speaker" : "Greg", 
-			"emotion" : "neutral",
-			"dialogue" : "..."
 		},
 		{
 			"action" : "speak",

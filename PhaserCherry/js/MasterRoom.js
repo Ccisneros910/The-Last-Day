@@ -15,6 +15,9 @@ var MasterRoom = {
 			cWeddingPhoto.scale.set(0.3, 0.3);
 			// game.physics.arcade.enable(clue);
 			cRing = clues.create(560, 430, 'ring');
+			cRing.animations.add('still', ['ringbox0'], 0, false);
+			cRing.animations.add('close', ['ringbox0', 'ringbox1', 'ringbox2', 'ringbox3'], 4, false);
+			cRing.animations.add('open', ['ringbox3', 'ringbox2', 'ringbox1', 'ringbox0'], 4, false);
 			if(GregScene == 0){
 				cRing.alpha = 0;
 			}
@@ -23,12 +26,12 @@ var MasterRoom = {
 		//make the husbando
 		Greg = null;
 		if(GregScene == 0 || SaraScene == 3 && KeithScene == 4){
-			game.camera.onFlashComplete.addOnce(cutsceneOn);
 			if(GregScene == 0){
 				Greg = game.add.sprite(1050, 500, 'fullBody&Walk');
 				Greg.alpha = 0;
 			}else if(SaraScene == 3 && KeithScene == 4){
-				Greg = game.add.sprite(350, 500, 'fullBody&Walk');
+				game.camera.onFlashComplete.addOnce(cutsceneOn);
+				Greg = game.add.sprite(680, 500, 'fullBody&Walk');
 			}
 			if(Greg != null){
 				Greg.anchor.x = 0.5;
@@ -48,7 +51,8 @@ var MasterRoom = {
 		player = new Player(game, playerX, playerY, 'ghost');
 		if(GregScene == 0){
 			player.alpha = 0;
-
+		}else{
+			player.alpha = 0.8;
 		}
 		// player.alpha = 0;
 		console.log(player);
@@ -60,6 +64,13 @@ var MasterRoom = {
 		spacebarP.alpha = 0;
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
+		arrowKeys = player.addChild(game.add.sprite(0, -160, 'arrowKeys'));
+		arrowKeys.scale.set(1, 1);
+		arrowKeys.animations.add('dance');
+		arrowKeys.alpha = 0;
+		arrowKeys.anchor.x = 0.5;
+		arrowKeys.anchor.y = 0.5;
+
 		// DIALOGUE SETUP
 		dialogue = JSON.parse(game.cache.getText('GregScenes'));
 		// the dialogue box for that will display behind each text message
@@ -74,13 +85,14 @@ var MasterRoom = {
 		dText = game.add.text(320, 520, '', dialogueStyle);
 		//place emotions in box but turn off
 		// Ghost emotions
-		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
+		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'emotes'));
 		GhostEmotes.scale.set(1, 1);
 		GhostEmotes.anchor.x = 0.5;
 		GhostEmotes.anchor.y = 0.5;
-		GhostEmotes.animations.add('neutral', [0], 0, false);
-		GhostEmotes.animations.add('cry', [1, 2], 3, true);
-		GhostEmotes.animations.add('surprise', [3, 4], 3, true);
+		GhostEmotes.animations.add('neutral', ['player0'], 0, false);
+		GhostEmotes.animations.add('cry', ['player1', 'player2'], 3, true);
+		GhostEmotes.animations.add('surprise', ['player3', 'player4'], 3, true);
+		GhostEmotes.animations.add('bittersweet', ['player5', 'player6'], 3, true);
 		GhostEmotes.alpha = 0;
 		//Greg emotions
 		GregEmotes = dBox.addChild(game.add.sprite(100, 100, 'GregEmotions'));
@@ -96,14 +108,43 @@ var MasterRoom = {
 		currentScene = GregScene;
 		nextEvent = dialogue[currentScene][event];
 		player.time = 0;
+		// MESSAGES LEFT SETUP
 		messageBG = game.add.sprite(0, 0, 'message');
+		if(GregScene == 0){
+		messageBG.alpha = 1;
+		}else{
 		messageBG.alpha = 0;
+		}
+		message = game.add.text(game.world.centerX, game.world.centerY, '', messageStyle);
+		message.anchor.x = 0.5
+		console.log("messageBG alpha: " + messageBG.alpha);
+		if(ScenesLeft == 3 && GregScene == 0){
+			console.log("first message");
+			message.text = "Three goodbyes remain";
+			messageBG.alpha = 1;
+			message.alpha = 0;
+		}else if(ScenesLeft == 0){
+			console.log("last message");
+			message.text = "You have said all of your goodbyes.\nIt is time for you to go, and don't worry.\nIt will take time, but you have helped your family to heal.";
+			messageBG.alpha = 1;
+			message.alpha = 0;
+		}
+		if(message != null && messageBG != null){
+			console.log("prepping message")
+			t01 = game.add.tween(messageBG).to({alpha : 1}, 1000, Phaser.Easing.Linear.None, false);
+			t02 = game.add.tween(message).to({alpha : 1}, 1500, Phaser.Easing.Linear.None);
+			t03 = game.add.tween(message).to({alpha : 1}, 3000, Phaser.Easing.Linear.None);
+			t04 = game.add.tween(message).to({alpha : 0}, 1500, Phaser.Easing.Linear.None);
+			t05 = game.add.tween(messageBG).to({alpha : 0}, 3000, Phaser.Easing.Linear.None);
+		}
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
 		if(GregScene == 0 && SaraScene == 0 && KeithScene == 0){
-			game.camera.flash(0x000000, 3000);
+			console.log("starting message");
+			playMessage();
+			game.camera.flash(0x000000, 1);
 		}else{
-			game.camera.flash(0x000000, 500);
+			game.camera.flash(0x000000, 1000);
 		}
 	},
 	update: function(){
@@ -114,6 +155,7 @@ var MasterRoom = {
 	 			// console.log("start of scene");
 				if(nextEvent != null){
 	 				CutscenePlay();
+	 				player.speed = 0;
 				}
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
@@ -125,7 +167,13 @@ var MasterRoom = {
 	 					console.log("tween ended \n END OF SCENE");
 	 					cutsceneOff();
 	 					advanceCutscene();
-	 					player.speed = 400;
+	 					if(GregScene == 4){
+	 						ScenesLeft--;
+	 						playMessage();
+	 					}else{
+	 						playArrowKeys();
+	 						player.speed = 400;
+	 					}
 	 				}
 	 			}else if(currentEvent.action == "speak"){
 	 				// console.log("dialog running");
@@ -139,7 +187,13 @@ var MasterRoom = {
 						resetDBox();
 	 					cutsceneOff();
 	 					advanceCutscene();
-	 					player.speed = 400;
+	 					if(GregScene == 4){
+	 						ScenesLeft--;
+	 						playMessage();
+	 					}else{
+	 						playArrowKeys();
+	 						player.speed = 400;
+	 					}
 					}
 	 			}
 	 		}
@@ -150,13 +204,19 @@ var MasterRoom = {
 	 			// checks if player is overlapping with any clues
 	 		}else if(game.physics.arcade.overlap(player, toHallway, overDoor, null, this)){ 		
 	 			// to leave the room
+	 		}else if(GregScene == 4 && SaraScene == 3 && KeithScene == 4){
+	 			playMessage();
 	 		}
 	 		else{
 	 			clearPlayer();
 				stopSpacebar();
 	 		}
+	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
+	 			stopArrowKeys();
+	 		}
 	 	}
  	}
+
 	// render: function(){
 	// 	game.debug.body(clue);
 	// 	game.debug.body(player);
@@ -172,6 +232,7 @@ function checkOverlap(c, p){
 function clueFound(p, g){
 	playSpacebar(p);	//first indicate to the player they can do something
 	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && p.time > 50){
+		player.speed = 0;
 		console.log('spacebar pressed');
 		// make sure there is currently no dialogue
 	    if(dText.text == '' && dialoguePlaying == false){
@@ -181,11 +242,15 @@ function clueFound(p, g){
 	    	player.speed = 0;
 	    	stopSpacebar();
 		    if(g.key == 'Wedding'){
-		    	dText.text = "Till death do us part...Little did I know death would come so soon.";
 		    	GhostEmotes.animations.play("neutral");
+		    	dText.text = "Till death do us part...Little did I know death would come so soon.";
 			}else if(g.key =='ring'){
-		    	dText.text = "You wore this to show your faith to me, but now you are...";
-		    	GhostEmotes.animations.play("cry");
+				if(SaraScene == 3 & KeithScene == 4){
+					cutsceneOn();
+				}else{
+		    		GhostEmotes.animations.play("cry");
+		    		dText.text = "I know he doesn't have to wear it anymore, but seeing him take it off...just hurts.";
+		    	}
 			}else if(g.key =='Camera'){
 				if(SaraScene ==2 && currentRoom == "DaughterRoom"){
 					console.log("Starting scene 3");
@@ -206,9 +271,15 @@ function clueFound(p, g){
 				if(KeithScene == 2 && currentRoom == "LivingRoom"){
 					cutsceneOn();
 					hatHeld = true;
-				}else{
+				}else if(KeithScene == 0 && currentRoom == "LivingRoom"){
 		    		GhostEmotes.animations.play("surprise");
 		    		dText.text = "If our little Chef's hat is here, he must not be too far.";
+				}else if(KeithScene == 1 && currentRoom == "LivingRoom"){
+		    		GhostEmotes.animations.play("bittersweet");
+		    		dText.text = "Something tells me he might need this soon.";
+				}else if(KeithScene == 4 && currentRoom == "Kitchen"){
+		    		GhostEmotes.animations.play("bittersweet");
+		    		dText.text = "Don't you ever stop cooking Keith.";
 				}
 				// else if(KeithScene == 3){
 		  //   		dText.text = "Every stain is a reminder of every meal you have made.";
@@ -220,6 +291,9 @@ function clueFound(p, g){
 					GhostEmotes.animations.play("neutral");
 		    		dText.text = "It's taken some work, but you have come up with some good things.";
 				}
+			}else if(g.key == 'door'){
+				GhostEmotes.animations.play("bittersweet");
+	    		dText.text = "If Keith is going to be anywhere, it's in the kitchen.";
 			}
 			if(cutscenePlaying == false){
 				GhostEmotes.alpha = 1;
@@ -234,7 +308,7 @@ function clueFound(p, g){
 			dialoguePlaying = false;
 			playSpacebar(p);
 			resetDBox();
-			unpausePlayer(p);
+			unpausePlayer();
 			GhostEmotes.alpha = 0;
 			// p.speed = 400;
 			player.time = 0;
@@ -265,6 +339,12 @@ function leaveRoom(){
 	console.log("going to " + player.currentDoor);
 	game.state.start(player.currentDoor);
 }
+function endGame(){
+	SaraScene = 0;
+	GregScene = 0;
+	KeithScene = 0;
+	game.state.start("Menu");
+}
 // Spacebar management
 function playSpacebar(p){
 	if(p != null){
@@ -281,6 +361,16 @@ function stopSpacebar(){
 	spacebarP.alpha = 0;
 	spacebarP.animations.stop();
 }
+function playArrowKeys(){
+	if(arrowKeys != null){
+		arrowKeys.alpha = 1;
+	}
+}
+function stopArrowKeys(){
+	if(arrowKeys != null){
+		arrowKeys.alpha = 0;
+	}
+}
 //Player conditional management
 function clearPlayer(){
 	if(player != null){
@@ -293,7 +383,7 @@ function pausePlayer(p){
 	player.speed = 0;
 }
 function unpausePlayer(p){
-	p.speed = 400;
+	player.speed = 400;
 }
 function resetDBox(){
 	console.log("clearing dialog");
@@ -312,34 +402,24 @@ function resetDBox(){
 		KeithEmotes.alpha = 0;
 	}
 }
-function GregExit(){
-	GregFlip();
-	t03.start();
-}
-function GregClear(){
-	if(Greg != null){
-		Greg.destroy();
-		Greg = null;
-	}
-}
 function ObjFlip(obj){
 	if(obj!=null){
 		// Greg.kill();
 		// Greg = game.add.sprite(400, 500, 'Greg');
 		// GregMake();
 		console.log("Object's scale: " + obj.scale.x);
-		if(obj.scale.x > 0){
-			if(currentRoom == "Kitchen"){
+		if(currentRoom == "Kitchen"){
+			if(obj.scale.x > 0){
 				obj.scale.set(-0.8, 0.8);
-			}else{
-				obj.scale.set(-1, 1);
-			}
-		}else if(obj.scale.x < 0){
-			if(currentRoom == "Kitchen"){
+			}else if(obj.scale.x < 0){
 				obj.scale.set(0.8, 0.8);
-			}else{
-				obj.scale.set(1, 1);
 			}
+		}else{
+			if(obj.scale.x > 0){
+				obj.scale.set(-1, 1);
+			}else if(obj.scale.x < 0){
+				obj.scale.set(1, 1);
+			}			
 		}
 	}
 }
@@ -349,6 +429,42 @@ function GregMake(){
 		Greg.anchor.y = 0.5;
 		Greg.alpha = 0;
 	}
+}
+function playMessage(){
+	console.log("playing first tween");
+	// assign the corresponding message
+	message.alpha = 0;
+	if(ScenesLeft == 3){
+		message.text = "Three people need to hear you say goodbye."
+	}else if(ScenesLeft == 2){
+		message.text = "Two more goodbyes to go."
+	}else if(ScenesLeft == 1){
+		message.text = "Only one more farewell."
+	}else if(ScenesLeft == 0){
+		message.text = "You have said your goodbyes. The time has come to move on.\nBut don't worry. \nIt is hard for them now, but you have helped them move on."
+	}
+	// chain the first four tweens together
+	t01.chain(t02);
+	t02.chain(t03);
+	t03.chain(t04);
+	// IF all scenes, go to menu state on completion of tween #4
+	// ELSE return to current room
+	if(GregScene == 4 && SaraScene == 3 && KeithScene == 4){
+		t04.onComplete.add(endGame);
+	}else{
+		t04.chain(t05);
+	}
+	// IF the game just started, play Greg's first scene immediately afterwards
+	console.log("adding end condition now");
+	if(GregScene == 0){
+		t05.onComplete.add(cutsceneOn, this);
+	}else{
+		t05.onComplete.add(playArrowKeys, this);
+	}
+	t05.onComplete.add(unpausePlayer, this);
+	t01.onStart.add(pausePlayer, this);
+	console.log("starting message NOW");
+	t01.start();
 }
 // CUTSCENE CONTROL
 function advanceCutscene(){
@@ -402,6 +518,9 @@ function CutscenePlay(){
 		}else if(dialogue[currentScene][event]['effect'] == "y"){
 			console.log("EASING EFFECT: " + dialogue[currentScene][event]['easing']);
 			tweenCheck = game.add.tween(this[dialogue[currentScene][event]['speaker']]).to({y : Number(dialogue[currentScene][event]['result'])}, Number(dialogue[currentScene][event]['duration']), this[dialogue[currentScene][event]['easing']], true);
+			if(dialogue[currentScene][event]['animation'] != null){
+				this[dialogue[currentScene][event]['speaker']].animations.play(dialogue[currentScene][event]['animation']);
+			}
 		}else if(dialogue[currentScene][event]['effect'] == "flip"){
 			ObjFlip(this[dialogue[currentScene][event]['speaker']]);
 		}
@@ -410,7 +529,15 @@ function CutscenePlay(){
 		playSpacebar(player);
 		dBox.alpha = 1;
 		GhostEmotes.alpha = 0;
-		GregEmotes.alpha = 0;
+		if(GregEmotes != null){
+			GregEmotes.alpha = 0;
+		}
+		if(KeithEmotes != null){
+			KeithEmotes.alpha = 0;
+		}
+		if(SaraEmotes != null){
+			SaraEmotes.alpha = 0;
+		}
 		if(dialogue[currentScene][event]['speaker'] == "player"){
 			GhostEmotes.alpha = 1;
 			GhostEmotes.animations.play(dialogue[currentScene][event]['emotion']);
