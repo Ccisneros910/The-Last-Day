@@ -138,6 +138,7 @@ var MasterRoom = {
 	 			// console.log("start of scene");
 				if(nextEvent != null){
 	 				CutscenePlay();
+	 				player.speed = 0;
 				}
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
@@ -352,10 +353,18 @@ function ObjFlip(obj){
 		// Greg = game.add.sprite(400, 500, 'Greg');
 		// GregMake();
 		console.log("Object's scale: " + obj.scale.x);
-		if(obj.scale.x > 0){
-			obj.scale.set(-1, 1);
-		}else if(obj.scale.x < 0){
-			obj.scale.set(1, 1);
+		if(currentRoom == "Kitchen"){
+			if(obj.scale.x > 0){
+				obj.scale.set(-0.8, 0.8);
+			}else if(obj.scale.x < 0){
+				obj.scale.set(0.8, 0.8);
+			}
+		}else{
+			if(obj.scale.x > 0){
+				obj.scale.set(-1, 1);
+			}else if(obj.scale.x < 0){
+				obj.scale.set(1, 1);
+			}			
 		}
 	}
 }
