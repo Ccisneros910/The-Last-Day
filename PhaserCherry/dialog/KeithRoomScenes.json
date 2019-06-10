@@ -266,7 +266,9 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "bittersweet",
-			"dialogue" : "Oh Keith, you'll do great. I don't think you need my help anymore."
+			"dialogue" : "Oh Keith, you'll do great. I don't think you need my help anymore.",
+			"emotion" : "neutral",
+			"dialogue" : "Alright, now the chef can finally start his work."
 		}
 	]
 ]

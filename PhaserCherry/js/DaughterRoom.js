@@ -182,6 +182,9 @@ var DaughterRoom = {
 	 		if(player.body.velocity.x != 0 || player.body.velocity.y != 0){
 	 			stopArrowKeys();
 	 		}
+	 		if(SaraScene >= 3 && cCamera != null){
+	 			cCamera.destroy();
+	 		}
 
 	 	}
 	}
