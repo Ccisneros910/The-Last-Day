@@ -23,11 +23,11 @@ var MasterRoom = {
 		//make the husbando
 		Greg = null;
 		if(GregScene == 0 || SaraScene == 3 && KeithScene == 4){
-			game.camera.onFlashComplete.addOnce(cutsceneOn);
 			if(GregScene == 0){
 				Greg = game.add.sprite(1050, 500, 'fullBody&Walk');
 				Greg.alpha = 0;
 			}else if(SaraScene == 3 && KeithScene == 4){
+				game.camera.onFlashComplete.addOnce(cutsceneOn);
 				Greg = game.add.sprite(350, 500, 'fullBody&Walk');
 			}
 			if(Greg != null){
@@ -91,13 +91,47 @@ var MasterRoom = {
 		currentScene = GregScene;
 		nextEvent = dialogue[currentScene][event];
 		player.time = 0;
+<<<<<<< Updated upstream
+=======
+		// MESSAGES LEFT SETUP
+		messageBG = game.add.sprite(0, 0, 'message');
+		messageBG.alpha = 0;
+		message = game.add.text(game.world.centerX, game.world.centerY, '', messageStyle);
+		message.anchor.x = 0.5
+		console.log("messageBG alpha: " + messageBG.alpha);
+		if(ScenesLeft == 3){
+			console.log("first message");
+			message.text = "Three goodbyes remain";
+			messageBG.alpha = 1;
+			message.alpha = 0;
+		}else if(ScenesLeft == 0){
+			console.log("last message");
+			message.text = "No more goodbyes to say. The time has come to move on. But don't worry. It is hard for them now, but they have been put on a path of healing.";
+			messageBG.alpha = 1;
+			message.alpha = 0;
+		}
+		if(message != null && messageBG != null){
+			console.log("prepping message")
+			t01 = game.add.tween(messageBG).to({alpha : 1}, 1000, Phaser.Easing.Linear.None, false);
+			t02 = game.add.tween(message).to({alpha : 1}, 1500, Phaser.Easing.Linear.None);
+			t03 = game.add.tween(message).to({alpha : 1}, 3000, Phaser.Easing.Linear.None);
+			t04 = game.add.tween(message).to({alpha : 0}, 1500, Phaser.Easing.Linear.None);
+			t05 = game.add.tween(messageBG).to({alpha : 0}, 3000, Phaser.Easing.Linear.None);
+			t01.chain(t02);
+			t02.chain(t03);
+			t03.chain(t04);
+			t04.chain(t05);
+			t05.onComplete.add(cutsceneOn, this);
+			// t05.onComplete.add()
+		}
+>>>>>>> Stashed changes
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
 		if(GregScene == 0 && SaraScene == 0 && KeithScene == 0){
-			game.camera.flash(0x000000, 3000);
-		}else{
-			game.camera.flash(0x000000, 500);
+			console.log("starting message");
+			t01.start();
 		}
+		game.camera.flash(0x000000, 10);
 	},
 	update: function(){
 	 	player.time++;
@@ -334,6 +368,10 @@ function GregMake(){
 		Greg.anchor.y = 0.5;
 		Greg.alpha = 0;
 	}
+}
+function playMessage(){
+	console.log("playing first tween");
+	t01.start();
 }
 // CUTSCENE CONTROL
 function advanceCutscene(){

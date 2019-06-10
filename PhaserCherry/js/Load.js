@@ -1,10 +1,11 @@
-var promptMessages = ["Press SPACEBAR to enter"];
+var promptMessage;
 // characters
 var Sara, Keith, Greg;
 var GregTween, SaraTween, KeithTween;
 var GhostEmotes, GregEmotes, SaraEmotes, KeithEmotes;
 // cutscenes variables
-var SaraScene = 0, KeithScene = 0, GregScene = 0, currentScene = 0;
+var SaraScene = 0, KeithScene = 0, GregScene = 0, currentScene = 0, ScenesLeft = 3;
+var t01, t02, t03, t04, t05;
 var event = 0, nextEvent = null, currentEvent = null;
 var dialogue, tweenCheck; // file to read from
 var prompt, dBox, dText, spacebarP, spacebarB; //images and text
@@ -45,16 +46,25 @@ var dialogueStyle = {
 	wordWrap: true,
 	wordWrapWidth: 700
 };
+var messageStyle = {
+	font: 'Libre Baskerville',
+	fontSize: 30,
+	fill: '#ffffff',
+	align: 'center',
+	wordWrap: true,
+	wordWrapWidth: 500
+};
 
 var Load = {
 	preload: function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		console.log('MainMenu: preload');
 		game.load.path = ('assets/img/');
-		game.load.image('homeScreen', 'house.jpg');
+		game.load.image('homeScreen', 'Rooms/titleScreen.png');
 		// game.load.image('dialogue', 'dialogueBox.jpg');
 		//Characters
 		// game.load.image('ghost', 'ghostSmall.png');
+		game.load.image('title', 'LOGO.png');
 		game.load.atlas('ghost', 'ghostAnimation.png', 'ghostAnimation.json');
 		game.load.atlas('GhostEmotions', 'ghostEmotions.png', 'ghostEmotions.json');
 		game.load.image('Greg', 'GregOverworldSprite.png');

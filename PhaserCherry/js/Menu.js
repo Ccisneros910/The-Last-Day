@@ -7,16 +7,18 @@ var MainMenu = {
 		// game.camera.fade(0x000000, 1);
 		game.stage.backgroundColor = "#ffffff";
 		bgm = game.add.audio('mainMenu');
-		bgm.play();
+		bgm.play("", 1, 0.3 , true);
 		sfx = game.add.audio('buttonSelect');
 		this.background = game.add.sprite(0, 0, 'homeScreen');
-		this.title = game.add.text(100, 50, 'The Last Day', titleStyle);
+		this.title = game.add.sprite(100, 50, 'title');
+		this.title.scale.set(0.4, 0.4);
 		// this.title.anchor.set(0.5);
 		this.line1 = game.add.text(100, 200, 'Start', optionStyle);
 		// this.line1.anchor.set(0.5);
 		this.line2 = game.add.text(100, 250, 'Credits', optionStyle);
 		// this.line2.anchor.set(0.5);
 		this.line3 = game.add.text(100, 300, 'Quit', optionStyle);
+		this.line3.alpha = 0;
 		//credits text
 		this.creditsTitle  = game.add.text(game.world.centerX, 100, 'A We Dem Boyz Production', titleStyle);
 		this.credits = game.add.text(game.world.centerX, 200, 'Team Members:\nCarlos Cisneros\nSally Nguy\nKatheriya Prowsri\n\nContributing Artist:\n', creditStyle);
@@ -31,7 +33,7 @@ var MainMenu = {
 		//enable input for buttons
 		this.line1.inputEnabled = true;
 		this.line2.inputEnabled = true;
-		this.line3.inputEnabled = true;
+		this.line3.inputEnabled = false;
 		this.creditsExit.inputEnabled = true;
 		// add functionality to the buttons
 		this.line1.events.onInputOver.add(over, this);
@@ -64,21 +66,32 @@ function showCredits(item, a, t1, l2, l3, c1, c2, l4){
 	game.add.tween(t1).to({alpha:0},1000, "Linear", true);
 	game.add.tween(l2).to({alpha:0},1000, "Linear", true);
 	game.add.tween(l3).to({alpha:0},1000, "Linear", true);
+	item.inputEnabled = false;
+	t1.inputEnabled = false;
+	l2.inputEnabled = false;
+	l3.inputEnabled = false;
 	// reveal the credits menu
 	game.add.tween(c1).to({alpha:1},1000, "Linear", true, 1100);
 	game.add.tween(c2).to({alpha:1},1000, "Linear", true, 1100);
 	game.add.tween(l4).to({alpha:1},1000, "Linear", true, 1100);
+	l4.inputEnabled = true;
 };
 function hideCredits(item, a, t1, l1, l2, l3, c1, c2){
 	// hide the credits menu
 	game.add.tween(item).to({alpha:0},1000, "Linear", true);
 	game.add.tween(c1).to({alpha:0},1000, "Linear", true);
 	game.add.tween(c2).to({alpha:0},1000, "Linear", true);
+	item.inputEnabled = false;
+	c1.inputEnabled = false;
+	c2.inputEnabled = false;
 	// make the options reappear
 	game.add.tween(t1).to({alpha:1},1000, "Linear", true, 1100);
 	game.add.tween(l1).to({alpha:1},1000, "Linear", true, 1100);
 	game.add.tween(l2).to({alpha:1},1000, "Linear", true, 1100);
-	game.add.tween(l3).to({alpha:1},1000, "Linear", true, 1100);
+	game.add.tween(l3).to({alpha:0},1000, "Linear", true, 1100);
+	l1.inputEnabled = true;
+	l2.inputEnabled = true;
+	// l3.inputEnabled = true;
 };
 function startTransition(){
 	sfx.play();

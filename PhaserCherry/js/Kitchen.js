@@ -21,6 +21,7 @@ var Kitchen = {
 			Keith.animations.add('walk', ['keithWalk1', 'keithWalk2', 'keithWalk3', 'keithWalk4'], 3, true);
 			Keith.animations.play('stand');
 		}
+		console.log("making clues");
 		// CLUES
 		clues = game.add.group();
 		clues.enableBody = true;
@@ -42,6 +43,7 @@ var Kitchen = {
 		cCookBook.anchor.y = 1;
 		// player must be drawn last to be above everything
 		//make player
+		console.log("making player");
 		player = new Player(game, 300, 350, 'ghost');
 		player.alpha = 0.8;
 		// the spacebar will follow the player around
@@ -52,11 +54,16 @@ var Kitchen = {
 		spacebarP.anchor.x = 0.5;
 		spacebarP.anchor.y = 0.5;
 		// DIALOG BOX
+		console.log("making dialog box");
 		dBox = game.add.sprite(100, 500, 'dBox');
 		dBox.alpha = 0;
 		dText = game.add.text(320, 520, '', dialogueStyle);
+		dialogue = null;
+		console.log("retrieving dialog");
 		dialogue = JSON.parse(game.cache.getText('KeithScenes'));
+		console.log("retrieved dialog");
 		// emotions
+		console.log("adding emotes");
 		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
 		GhostEmotes.scale.set(1, 1);
 		GhostEmotes.anchor.x = 0.5;

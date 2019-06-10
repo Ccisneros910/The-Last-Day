@@ -31,7 +31,7 @@ var DaughterRoom = {
 			cCamera.anchor.y = 0.5;
 		}
 		// make Sara
-
+		
 		// make player
 		// player must be drawn last to be above everything
 		playerX = 380;
