@@ -50,7 +50,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "800",
-			"duration" : "2800"
+			"duration" : "2800",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -111,7 +120,8 @@
 			"speaker" : "cPhotoWall", 
 			"effect" : "y",
 			"result" : "500",
-			"duration" : "500"
+			"duration" : "1000",
+			"animation" : "fall"
 		},
 		{
 			"action" : "tween",
@@ -123,7 +133,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "600",
-			"duration" : "1000"
+			"duration" : "1000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "600",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -138,7 +157,8 @@
 			"speaker" : "cPhotoWall", 
 			"effect" : "y",
 			"result" : "320",
-			"duration" : "1000"
+			"duration" : "1000",
+			"animation" : "lift"
 		},
 		{
 			"action" : "speak",
@@ -162,7 +182,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "800",
-			"duration" : "1000"
+			"duration" : "1000",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "800",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",
@@ -179,8 +208,8 @@
 		{
 			"action" : "speak",
 			"speaker" : "Sara", 
-			"emotion" : "neutral",
-			"dialogue" : "Bob...are you there?"
+			"emotion" : "confused",
+			"dialogue" : "Bob...can you hear me?are you there?"
 		},
 		{
 			"action" : "speak",
@@ -222,7 +251,7 @@
 			"action" : "speak",
 			"speaker" : "player",
 			"emotion" : "neutral",
-			"dialogue" : "Oh Sara...I want you to keep doing what makes you happy, and... I hope *taking pictures* does that. I know it does that."
+			"dialogue" : "Oh Sara...I want you to keep doing what makes you happy, I know *taking pictures* does that."
 		}
 	],
 	[
@@ -266,7 +295,7 @@
 		{
 			"action" : "speak",
 			"speaker" : "Sara",
-			"emotion" : "neutral",
+			"emotion" : "distraught",
 			"dialogue" : "I want to take more pictures, but I'm scared to do it alone."
 		},
 		{
@@ -279,7 +308,7 @@
 			"action" : "speak",
 			"speaker" : "Sara",
 			"emotion" : "cry",
-			"dialogue" : "...but this is what you want...isn't it Bob?"
+			"dialogue" : "...but this must be what Bob wanted, right?"
 		},
 		{
 			"action" : "speak",
@@ -299,7 +328,16 @@
 			"speaker" : "Sara", 
 			"effect" : "x",
 			"result" : "250",
-			"duration" : "2500"
+			"duration" : "2500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Sara", 
+			"effect" : "x",
+			"result" : "250",
+			"duration" : "1",
+			"animation" : "stand"
 		},
 		{
 			"action" : "speak",

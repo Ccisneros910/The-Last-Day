@@ -8,14 +8,14 @@ var SaraScene = 0, KeithScene = 0, GregScene = 0, currentScene = 0, ScenesLeft =
 var t01, t02, t03, t04, t05;
 var event = 0, nextEvent = null, currentEvent = null;
 var dialogue, tweenCheck; // file to read from
-var prompt, dBox, dText, spacebarP, spacebarB; //images and text
+var prompt, dBox, dText, spacebarP, spacebarB, arrowKeys; //images and text
 // player variables
 var player, controls, currentRoom, playerX, playerY, hatHeld;
 // reusables
 var toHallway, toSara, toKeith, toLivingRoom, toKitchen, toMaster; // doors
 var clues, clue, viewing = false;
 // clue list
-var cRing, cWeddingPhoto, cCamera, cPhotoWall, cCookBook, cChefsHat;
+var cRing, cWeddingPhoto, cCamera, cPhotoWall, cCookBook, cChefsHat, cKeithDoor, cScribble1, cScribble2;
 var overClue, dialoguePlaying = false, cutscenePlaying = false; // booleans
 //finished cutscenes
 var enterGreg = false, goodbyeGreg = false, enterSara = false, goodbyeSara = false, enterKeith = false, goodbyeKeith = false;
@@ -24,18 +24,17 @@ var bgm, sfx;
 var titleStyle = {
 	font: 'Pacifico',
 	fontSize: 64,
-	fill: '#66f5ff'
+	fill: '#000000'
 };
 var optionStyle = {
 	font: 'Pacifico',
 	fontSize: 30,
-	fill: '#ffffff'
+	fill: '#000000'
 };
 var creditStyle = {
 	font: 'Pacifico',
 	fontSize: 25,
-	fill: '#ffffff',
-	backgroundColor: '#a3a3a3'
+	fill: '#000000'
 };
 // Dialogue text style
 var dialogueStyle = {
@@ -76,9 +75,9 @@ var Load = {
 		game.load.atlas('fullBody&Walk', 'charactersWalk.png', 'charactersWalk.json');
 		//Clues
 		game.load.image('Wedding', 'clueWeddingPortrait.png');	// Greg clues
-		game.load.image('ring', 'clueRing.png');
+		game.load.atlas('ring', 'clueRingBoxClosing.png', 'clueRingBoxClosing.json');
 		game.load.image('Camera', 'clueCamera.png');			// Sara Clues
-		game.load.image('PhotoWall', 'clueWallPhotos.png');
+		game.load.atlas('PhotoWall', 'clueWallPhotosFalling.png', 'clueWallPhotosFalling.json');
 		game.load.image('ChefsHat', 'clueChefsHat.png');			// Keith Clues
 		game.load.image('CookBook', 'clueCookBook.png');
 		// game.load.image('glow', 'glowBall.png');
@@ -86,6 +85,7 @@ var Load = {
 		game.load.image('dBox', 'dialogueBox.png');
 		game.load.atlas('door', 'doorSheet.png', 'doorSheet.json');
 		game.load.atlas('space bar', 'atlasSpacebar.png', 'hashSpacebar.json');
+		game.load.image('arrowKeys', 'arrowkeys.png');
 		//Rooms
 		game.load.path = ('assets/img/Rooms/');
 		game.load.image('masterR', 'masterBedroom.png');

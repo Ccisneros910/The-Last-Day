@@ -3,14 +3,16 @@ var Kitchen = {
 		game.camera.fade(0x000000, 0);
 		background = game.add.sprite(0, 0, 'kitchen');
 		toLivingRoom = new Door(game, 130, 720, 'door', 1, 'LivingRoom', 1.3, 2.2);
-		toLivingRoom.alpha = 1;
+		toLivingRoom.alpha = 0;
 		// KEITH INCOMING
 		if(KeithScene == 0){
-			Keith = game.add.sprite(500, 600, 'fullBody&Walk');
+			Keith = game.add.sprite(500, 630, 'fullBody&Walk');
 		}else if(KeithScene == 1||KeithScene == 2){
-			Keith = game.add.sprite(900, 600, 'fullBody&Walk');
+			Keith = game.add.sprite(900, 630, 'fullBody&Walk');
+		}else if(KeithScene == 2){
+			Keith = game.add.sprite(600, 630, 'fullBody&Walk');
 		}else if(KeithScene >= 3){
-			Keith = game.add.sprite(350, 600, 'fullBody&Walk');
+			Keith = game.add.sprite(350, 630, 'fullBody&Walk');
 		}
 		// Make sure he's in the room
 		if(Keith != null){
@@ -64,13 +66,14 @@ var Kitchen = {
 		console.log("retrieved dialog");
 		// emotions
 		console.log("adding emotes");
-		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'GhostEmotions'));
+		GhostEmotes = dBox.addChild(game.add.sprite(100, 100, 'emotes'));
 		GhostEmotes.scale.set(1, 1);
 		GhostEmotes.anchor.x = 0.5;
 		GhostEmotes.anchor.y = 0.5;
-		GhostEmotes.animations.add('neutral', [0], 0, false);
-		GhostEmotes.animations.add('cry', [1, 2], 3, true);
-		GhostEmotes.animations.add('surprise', [3, 4], 3, true);
+		GhostEmotes.animations.add('neutral', ['player0'], 0, false);
+		GhostEmotes.animations.add('cry', ['player1', 'player2'], 3, true);
+		GhostEmotes.animations.add('surprise', ['player3', 'player4'], 3, true);
+		GhostEmotes.animations.add('bittersweet', ['player5', 'player6'], 3, true);
 		GhostEmotes.alpha = 0;
 		//Greg emotions
 		KeithEmotes = dBox.addChild(game.add.sprite(100, 100, 'emotes'));
@@ -81,7 +84,25 @@ var Kitchen = {
 		KeithEmotes.animations.add('talk', ['keith0', 'keith1'], 3, true);
 		KeithEmotes.animations.add('cry', ['keith2', 'keith3'], 3, true);
 		KeithEmotes.animations.add('angry', ['keith4', 'keith5'], 3, true);
+		KeithEmotes.animations.add('confused', ['keith6', 'keith7'], 3, true);
 		KeithEmotes.alpha = 0;
+
+		messageBG = game.add.sprite(0, 0, 'message');
+		messageBG.alpha = 0;
+		// message text
+		message = game.add.text(game.world.centerX, game.world.centerY, '', messageStyle);
+		message.anchor.x = 0.5
+		message.alpha = 0;
+		console.log("prepping message sequence")
+		t01 = game.add.tween(messageBG).to({alpha : 1}, 1000, Phaser.Easing.Linear.None, false);
+		t02 = game.add.tween(message).to({alpha : 1}, 1500, Phaser.Easing.Linear.None);
+		t03 = game.add.tween(message).to({alpha : 1}, 3000, Phaser.Easing.Linear.None);
+		t04 = game.add.tween(message).to({alpha : 0}, 1500, Phaser.Easing.Linear.None);
+		t05 = game.add.tween(messageBG).to({alpha : 0}, 3000, Phaser.Easing.Linear.None);
+		t01.chain(t02);
+		t02.chain(t03);
+		t03.chain(t04);
+		t04.chain(t05);
 
 		currentScene = KeithScene;
 		cutscenePlaying = false;
@@ -106,11 +127,8 @@ var Kitchen = {
 	 			// console.log("start of scene");
 				if(nextEvent != null){
 	 				CutscenePlay();
+	 				player.speed = 0;
 				}
-				// else{
-				// 	cutscenePlaying = false;
-				// 	console.log("no cutscenes left");
-				// }
 	 		}else if(currentEvent != null){
 	 			if(currentEvent.action == "tween" ){
 	 				// console.log("tween running");
@@ -121,7 +139,13 @@ var Kitchen = {
 	 					console.log("tween ended \n END OF SCENE");
 	 					cutsceneOff();
 	 					advanceCutscene();
-	 					player.speed = 400;
+	 					console.log("KeithScene: " + KeithScene);
+	 					if(KeithScene == 4){
+	 						ScenesLeft--;
+	 						playMessage();
+	 					}else{
+	 						player.speed = 400;
+	 					}
 	 				}
 	 			}else if(currentEvent.action == "speak"){
 	 				// console.log("dialog running");
@@ -135,7 +159,12 @@ var Kitchen = {
 						resetDBox();
 	 					cutsceneOff();
 	 					advanceCutscene();
-	 					player.speed = 400;
+	 					if(KeithScene == 4){
+	 						ScenesLeft--;
+	 						playMessage();
+	 					}else{
+	 						player.speed = 400;
+	 					}
 					}
 	 			}
 	 		}

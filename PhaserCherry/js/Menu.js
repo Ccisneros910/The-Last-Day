@@ -54,7 +54,7 @@ var MainMenu = {
 };
 function over(item){
 	item.strokeThickness = 3;
-	item.stroke = '#000000';
+	item.stroke = '#ffffff';
 };
 function off(item){
 	item.strokeThickness = 0;
