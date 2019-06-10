@@ -91,8 +91,6 @@ var MasterRoom = {
 		currentScene = GregScene;
 		nextEvent = dialogue[currentScene][event];
 		player.time = 0;
-<<<<<<< Updated upstream
-=======
 		// MESSAGES LEFT SETUP
 		messageBG = game.add.sprite(0, 0, 'message');
 		messageBG.alpha = 0;
@@ -124,7 +122,6 @@ var MasterRoom = {
 			t05.onComplete.add(cutsceneOn, this);
 			// t05.onComplete.add()
 		}
->>>>>>> Stashed changes
 		currentRoom = 'MasterRoom';
 		console.log("entering the first room...");
 		if(GregScene == 0 && SaraScene == 0 && KeithScene == 0){
