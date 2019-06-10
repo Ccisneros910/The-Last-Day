@@ -144,7 +144,16 @@
 			"speaker" : "Greg", 
 			"effect" : "x",
 			"result" : "650",
-			"duration" : "500"
+			"duration" : "500",
+			"animation": "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg", 
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "10",
+			"animation": "stand"
 		},
 		{
 			"action" : "speak",
@@ -186,8 +195,78 @@
 			"action" : "tween",
 			"speaker" : "Greg",
 			"effect" : "x",
-			"result" : "1050",
-			"duration" : "2500"
+			"result" : "750",
+			"duration" : "1500",
+			"animation": "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "750",
+			"duration" : "10",
+			"animation" : "stand"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "neutral",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "2500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "650",
+			"duration" : "10",
+			"animation" : "stand"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "cRing",
+			"effect" : "alpha",
+			"result" : "1",
+			"duration" : "500"
+		},
+		{
+			"action" : "speak",
+			"speaker" : "Greg", 
+			"emotion" : "cry",
+			"dialogue" : "..."
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "flip"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "1020",
+			"duration" : "2500",
+			"animation" : "walk"
+		},
+		{
+			"action" : "tween",
+			"speaker" : "Greg",
+			"effect" : "x",
+			"result" : "1020",
+			"duration" : "10",
+			"animation" : "stand"
 		},
 		{
 			"action" : "tween",

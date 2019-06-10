@@ -93,7 +93,7 @@ var Load = {
 		game.load.image('daughterR', 'saraBedroom.png');
 		game.load.image('livingR', 'livingRoom.png');
 		game.load.image('kitchen', 'kitchen.png');
-		game.load.image('message', 'kitchen.png');
+		game.load.image('message', 'messageBG.png');
 		// DIALOGUE LOADING
 		game.load.path = ('dialog/');
 		game.load.text('GregScenes', 'GregRoomScenes.json');
